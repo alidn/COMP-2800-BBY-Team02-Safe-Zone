@@ -1,29 +1,45 @@
 <!DOCTYPE HTML>
 <html>
-  <head>
+
+<head>
     <style>
-      body {
-        margin: 0px;
-        padding: 0px;
-      }
+        body {
+            margin: 0px;
+            padding: 0px;
+        }
     </style>
-  </head>
-  <body data-rsssl=1>
+</head>
+
+<body data-rsssl=1>
     <canvas id="myCanvas" width="578" height="200"></canvas>
     <script>
-      var canvas = document.getElementById('myCanvas');
-      var context = canvas.getContext('2d');
-      var centerX = canvas.width / 2;
-      var centerY = canvas.height / 2;
-      var radius = 30;
+        var canvas = document.getElementById('myCanvas');
+        var context = canvas.getContext('2d');
+        var centerX = canvas.width / 2;
+        var centerY = canvas.height / 2;
+        var radius = 30;
 
-      context.beginPath();
-      context.arc(centerX, centerY, radius, 0, 2 * Math.PI, false);
-      context.fillStyle = 'red';
-      context.fill();
-      context.lineWidth = 10;
-      context.strokeStyle = 'tomato';
-      context.stroke();
+        context.beginPath();
+        context.arc(centerX, centerY, radius, 0, 2 * Math.PI, false);
+        context.fillStyle = 'red';
+        context.fill();
+        context.lineWidth = 10;
+        context.strokeStyle = 'tomato';
+        context.stroke();
+
+        //Function to copy a canvas module
+        function cloneCanvas(oldCanvas) {
+
+            var newCanvas = document.createElement('canvas');
+            var context = newCanvas.getContext('2d');
+            newCanvas.width = oldCanvas.width;
+            newCanvas.height = oldCanvas.height;
+            context.drawImage(oldCanvas, 0, 0);
+            return newCanvas;
+        }
+        var newCir = cloneCanvas(canvas);
+        newCir.moveTo(100,100);
     </script>
-  </body>
-</html>      
+</body>
+
+</html>
