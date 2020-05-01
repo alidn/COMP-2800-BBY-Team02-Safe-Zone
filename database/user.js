@@ -30,15 +30,24 @@ class DatabaseClient {
    */
   async addUser(userInfo) {
     userInfo = { ...userInfo, scores: [] };
-    if (userInfo.password === undefined || userInfo.password === "") {
-      return { error: "the password is not valid" };
+    if (userInfo.password === undefined) {
+      return { ok: false, error: "the password is not valid" };
     }
+    let { exists, error } = await this.usernameExists(userInfo.username);
+    if (exists) {
+      return { ok: false, error: "Username already exists" };
+    }
+    let result = await this.emailExists(userInfo.email); 
+    if (result.exists) {
+      return { ok: false, error: "Email already exists" };
+    }
+
     try {
       await this.users.insertOne({ ...userInfo });
-      return { error: null };
+      return { ok: true, verror: null };
     } catch (e) {
       console.log("Error trying to insert a user ");
-      return { error: e };
+      return { ok: false, error: e };
     }
   }
 
@@ -159,6 +168,14 @@ class DatabaseClient {
     }
 
     return { scores: user.scores, error: null };
+  }
+
+  async close() {
+    this.client.close();
+  }
+
+  async removeAllUsers() {
+    this.users.remove();
   }
 
   async topUsers(n) {}
