@@ -1,15 +1,23 @@
 function withSD() {
     document.getElementById("myNav").style.height = "0%";
     gameMode = 1;
+    document.getElementById("myGame").style.height = "100%";
 }
 
-// Takes user to 'easy' version of the game.
 function withoutSD() {
     document.getElementById("myNav").style.height = "0%";
     gameMode = 0;
+    document.getElementById("myGame").style.height = "100%";
 }
 
-// Sends user to the leaderboard page.
 function getHome() {
     location.replace('main.html');
+}
+
+function restart(){
+    location.reload();
+}
+
+function study(){
+    location.replace('study.html');
 }

@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Safe-Zone Game</title>
 
-    <link rel="stylesheet" type="text/css" href="../styling/gameplay.css"/>
+    <link rel="stylesheet" type="text/css" href="../styling/gameplay.css" />
 
 </head>
+
 <body>
-    
+
     <div id="myNav" class="overlay">
         <a href="javascript:void(0)" class="closebtn" onclick="getHome()">&times;</a>
         <div class="overlay-content">
@@ -19,6 +21,37 @@
         </div>
     </div>
 
+    <div id="myGame" class="gameOver">
+        <div class="gameOver-content">
+            <table style="width:100%">
+                <tr>
+                    <th>Username</th>
+                    <th>Score</th>
+                    <th>Time</th>
+                </tr>
+                <tr>
+                    <td>Sam</td>
+                    <td>25</td>
+                    <td>30</td>
+                </tr>
+                <tr>
+                    <td>Sam</td>
+                    <td>25</td>
+                    <td>30</td>
+                </tr>
+                <tr>
+                    <td>Sam</td>
+                    <td>25</td>
+                    <td>30</td>
+                </tr>
+            </table>
+
+            <button type="button" onclick="restart()">Play Again!</button>
+            <button type="button" onclick="study()">Learn More</button>
+        </div>
+    </div>
+
     <script src="../scripts/gameplay.js"></script>
 </body>
+
 </html>
