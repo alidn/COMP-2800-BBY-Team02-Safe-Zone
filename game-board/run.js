@@ -7,6 +7,8 @@ var Engine = Matter.Engine,
   World = Matter.World,
   Bodies = Matter.Bodies;
 
+const NUMBER_OF_DOTS = 10;
+
 // create engine
 let engine = Engine.create();
 let world = engine.world;
@@ -33,17 +35,18 @@ var runner = Runner.create();
 Runner.run(runner, engine);
 
 function createDot(color, radius) {
-  let dot = Bodies.circle(50, 50, radius || 20, {
+  let dot = Bodies.circle(50, 50, radius || 10, {
     friction: 0,
     frictionAir: 0,
     frictionStatic: 0,
     force: {
-      x: (Math.random() / 10) * (Math.random() < 0.5 ? -1 : 1),
-      y: (Math.random() / 10) * (Math.random() < 0.5 ? -1 : 1),
+      x: (Math.random() / 500) * (Math.random() < 0.5 ? -1 : 1),
+      y: (Math.random() / 500) * (Math.random() < 0.5 ? -1 : 1),
     },
     render: {
       fillStyle: color || "green",
     },
+    label: "Uninfected",
   });
   return dot;
 }
@@ -104,7 +107,7 @@ render.mouse = mouse;
 
 let dots = [];
 
-for (let i = 0; i < 20; i++) {
+for (let i = 0; i < NUMBER_OF_DOTS; i++) {
   let dot = createDot();
   dots.push(dot);
 }
@@ -128,15 +131,17 @@ isInfected[0] = true;
 for (let i = 0; i < dots.length; i++) {
   if (isInfected[i]) {
     dots[i].render.fillStyle = "red";
+    dots[i].label = "Infected";
   }
 }
+
+let firstTime = true;
 
 setTimeout(() => {
   setInterval(() => {
     for (let i = 0; i < dots.length; i++) {
       for (let j = 0; j < dots.length; j++) {
         if (i === j) continue;
-        // console.log(distance(dots[i], dots[j]));
         if (distance(dots[i], dots[j]) < 10000) {
           if (isInfected[i]) {
             isInfected[j] = true;
@@ -150,12 +155,14 @@ setTimeout(() => {
     for (let i = 0; i < dots.length; i++) {
       if (isInfected[i]) {
         dots[i].render.fillStyle = "red";
+        dots[i].label = "Infected";
       }
       dots[i].force = {
-        x: (Math.random() / 500) * (Math.random() < 0.5 ? -1 : 1),
-        y: (Math.random() / 500) * (Math.random() < 0.5 ? -1 : 1),
+        x: (Math.random() / 3000) * (Math.random() < 0.5 ? -1 : 1),
+        y: (Math.random() / 3000) * (Math.random() < 0.5 ? -1 : 1),
       };
     }
+    firstTime = false;
   }, 0.5);
 }, 1000);
 
@@ -164,4 +171,56 @@ function distance(dot1, dot2) {
     (dot1.position.x - dot2.position.x) * (dot1.position.x - dot2.position.x) +
     (dot1.position.y - dot2.position.y) * (dot1.position.y - dot2.position.y)
   );
+}
+
+Matter.Events.on(engine, "collisionActive", function (param) {
+  let arr = param.source.pairs.collisionActive;
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i].bodyA.id === kidDot.id || arr[i].bodyB.id === kidDot.id) {
+      if (
+        arr[i].bodyA.label === "Infected" ||
+        arr[i].bodyB.label === "Infected"
+      ) {
+        if (firstTime) break;
+        showLoseMessage();
+        break;
+      }
+    }
+  }
+});
+
+Matter.Events.on(engine, "collisionEnd", function (param) {
+  let arr = param.source.pairs.collisionActive;
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i].bodyA.id === kidDot.id || arr[i].bodyB.id === kidDot.id) {
+      if (
+        arr[i].bodyA.label === "Infected" ||
+        arr[i].bodyB.label === "Infected"
+      ) {
+        if (firstTime) break;
+        showLoseMessage();
+        break;
+      }
+    }
+  }
+});
+
+Matter.Events.on(engine, "collisionStart", function (param) {
+  let arr = param.source.pairs.collisionActive;
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i].bodyA.id === kidDot.id || arr[i].bodyB.id === kidDot.id) {
+      if (
+        arr[i].bodyA.label === "Infected" ||
+        arr[i].bodyB.label === "Infected"
+      ) {
+        if (firstTime) break;
+        showLoseMessage();
+        break;
+      }
+    }
+  }
+});
+
+function showLoseMessage() {
+  alert("You lost");
 }
