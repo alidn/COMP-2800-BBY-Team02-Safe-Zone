@@ -1,0 +1,24 @@
+{
+  "name": "comp-2800-bby-team02-safe-zone",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "jest": "^25.5.3",
+    "mongodb": "^3.5.7"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alidn/COMP-2800-BBY-Team02-Safe-Zone.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alidn/COMP-2800-BBY-Team02-Safe-Zone/issues"
+  },
+  "homepage": "https://github.com/alidn/COMP-2800-BBY-Team02-Safe-Zone#readme"
+}
