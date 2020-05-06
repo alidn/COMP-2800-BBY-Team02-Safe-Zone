@@ -21,3 +21,25 @@ function restart(){
 function study(){
     location.replace('study.html');
 }
+
+let timer;
+let timeElapsed = 0;
+let timeTenth = 0;
+
+function tick() {
+
+    document.getElementById("score").innerHTML = "<h1>SCORE: " + timeElapsed + "." + timeTenth + " s</h1>";
+    timeTenth++;
+    if (timeTenth == 10) {
+        timeElapsed++;
+        timeTenth = 0;
+    }
+}
+
+function start() {
+    timer = setInterval(tick, 100);
+}
+
+function stop() {
+    clearInterval(timer);
+}
