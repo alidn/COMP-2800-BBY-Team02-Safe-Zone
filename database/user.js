@@ -181,4 +181,5 @@ class DatabaseClient {
   async topUsers(n) {}
 }
 
+// module.exports = DatabaseClient;
 exports.DatabaseClient = DatabaseClient;
