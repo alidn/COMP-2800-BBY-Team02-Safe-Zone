@@ -78,51 +78,50 @@ router.post("/signup", async function (req, res) {
 
 router.post("/login", async function (req, res) {
   console.log(req.body);
-  console.log(req.query);
-  console.log(req.params);
-  // let username = req.body.username;
-  // let password = req.body.password;
-  // let db = req.app.locals.databaseClient;
 
-  // let { exists, error } = await db.usernameExists(username);
+  let username = req.body.username;
+  let password = req.body.password;
+  let db = req.app.locals.databaseClient;
 
-  // if (!exists) {
-  //   res.json({
-  //     loginSuccessful: false,
-  //     username: false,
-  //     password: null,
-  //     error: null,
-  //   });
-  //   return;
-  // }
+  let { exists, error } = await db.usernameExists(username);
 
-  // if (error !== null) {
-  //   res.json({
-  //     loginSuccessful: false,
-  //     username: null,
-  //     error: error,
-  //     password: null,
-  //   });
-  //   return;
-  // }
+  if (!exists) {
+    res.json({
+      loginSuccessful: false,
+      username: false,
+      password: null,
+      error: null,
+    });
+    return;
+  }
 
-  // let user = await db.getUserByUsername(username);
-  // if (password !== user.password) {
-  //   res.json({
-  //     loginSuccessful: false,
-  //     username: true,
-  //     password: false,
-  //     error: null,
-  //   });
-  //   return;
-  // }
+  if (error !== null) {
+    res.json({
+      loginSuccessful: false,
+      username: null,
+      error: error,
+      password: null,
+    });
+    return;
+  }
 
-  // res.josn({
-  //   loginSuccessful: true,
-  //   username: true,
-  //   password: true,
-  //   error: null,
-  // });
+  let user = await db.getUserByUsername(username);
+  if (password !== user.password) {
+    res.json({
+      loginSuccessful: false,
+      username: true,
+      password: false,
+      error: null,
+    });
+    return;
+  }
+
+  res.json({
+    loginSuccessful: true,
+    username: true,
+    password: true,
+    error: null,
+  });
 });
 
 module.exports = router;

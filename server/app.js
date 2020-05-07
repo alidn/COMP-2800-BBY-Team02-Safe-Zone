@@ -2,9 +2,13 @@ const express = require("express");
 const { DatabaseClient } = require("../database/user");
 const WebSocket = require("ws");
 const path = require("path");
+const bodyParser = require("body-parser");
 
 const app = express();
 const port = 3000;
+
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
 app.use(require("./routes/user"));
 app.use(express.static(path.join(__dirname, "public")));

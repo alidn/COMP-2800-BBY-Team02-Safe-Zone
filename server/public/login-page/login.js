@@ -1,23 +1,22 @@
 const SIGNIN_URL = "http://localhost:3000/login";
 
-document.getElementById("signInSubmitBtn").onclick = function (event) {
+document.getElementById("signInSubmitBtn").onclick = async function (event) {
   event.preventDefault();
-  let username = "Asdf";
-  let password = "ASdfaSF";
+  let username = "some_user";
+  let password = "pass";
+  let body = {
+    username: username,
+    password: password,
+  };
 
-  fetch(SIGNIN_URL, {
-    headers: { "content-type": "application/json" },
-    body: {
-      username: username,
-      password: password,
-    },
+  let response = await fetch(SIGNIN_URL, {
     method: "POST",
-  })
-    .then((response) => {
-      console.log(response.json());
-      console.log("Here");
-      return response.json();
-    })
-    .then((response) => console.log(response))
-    .catch((error) => console.log(error));
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(body),
+  });
+
+  console.log(await response.json());
 };
