@@ -20,9 +20,6 @@ function restart(){
 
 function study(){
     location.replace('study.html');
-<<<<<<< Updated upstream
-}
-=======
 }
 
 let timer;
@@ -72,4 +69,3 @@ window.onclick = function(event) {
         modal.style.display = "none";
   }
 }
->>>>>>> Stashed changes
