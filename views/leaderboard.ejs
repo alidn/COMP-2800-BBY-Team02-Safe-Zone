@@ -11,17 +11,17 @@
           <tr class=table-primary>
             <th>Ranking</th>
             <th>Name</th>
-            <th>Score</th>
+            <th onclick="sortUsers">Highest Score</th>
             <th>Date</th>
           </tr>
         </thead>
         <tbody>
-        <% for(let i = 0;i < userArray[0].length; i++){%>
+        <% for(let i = 0;i < userArray.length; i++){%>
           <tr <%= i%2 ? `class=table-dark` : `` %> >
             <th scope="row"><%= i+1 %></th>
-            <td><%= userArray[0][i].username %></td>
-            <td><%= userArray[0][i].scores[0].score %></td>
-            <td><%= userArray[0][i].scores[0].dateAchieved %></td>
+            <td><%= userArray[i].username %></td>
+            <td><%= userArray[i].scores[0].score %></td>
+            <td><%= userArray[i].scores[0].dateAchieved %></td>
           </tr>
         <% } %>
           
