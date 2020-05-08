@@ -51,6 +51,13 @@
         height: 2em;
         width: 12em;
     }
+
+    .button:hover{
+        border: 1px darkcyan solid;
+        color: darkcyan;
+        background-color: white;
+        cursor: pointer;
+    }
 }
 
 @media only screen and (min-width: 600px) and (max-width: 992px) {
