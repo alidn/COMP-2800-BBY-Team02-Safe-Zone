@@ -1,3 +1,8 @@
+body{
+    font-family: sans-serif;
+}
+
+/**---------------------------------------Game Mode------------------------------*/
 .overlay {
     height: 100%;
     width: 100%;
@@ -62,6 +67,7 @@
     }
 }
 
+/** ------------------------------------Game Over ---------------------------------------------*/
 .gameOver {
     text-align: center;
     height: 0%;
@@ -74,6 +80,12 @@
     background-color: white;
     overflow-y: hidden;
     transition: 0.5s;
+    background-color: darkcyan;
+}
+
+.gameOver-content{
+    text-align: center;
+    color: whitesmoke;
 }
 
 .overlay-content {
@@ -86,17 +98,26 @@
     color: rgb(37, 36, 36);
 }
 
-
 th {
-    font-size: 30px;
+    font-size: 20px;
 }
 
 td {
     padding: 15px;
-    border: black 1px solid;
+    border: whitesmoke 1px solid;
 }
 
 #score {
     float: left;
+}
 
+.gameOver-content button{
+    width: 200px;
+    height: 50px;
+    border: 1px solid black;
+    border-radius: 10px;
+    background-color: whitesmoke;
+    color: rgb(2, 75, 75);
+    margin-top: 50px;
+    font-size: 20px;
 }
