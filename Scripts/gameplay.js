@@ -14,11 +14,11 @@ function getHome() {
     location.replace('main.html');
 }
 
-function restart(){
+function restart() {
     location.reload();
 }
 
-function study(){
+function study() {
     location.replace('study.html');
 }
 
