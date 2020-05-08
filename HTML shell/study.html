@@ -5,21 +5,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Safe-Zone Study Page</title>
-
     <link rel="stylesheet" type="text/css" href="../styling/studyPage.css" />
-
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 </head>
+
 <body>
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+        <!-- Brand/logo -->
+        <a class="navbar-brand" href="#">
+            <img src="/images/nav.png" alt="logo" style="width:150px;">
+        </a>
 
-    <div id="studyNavBar">
-
-        <ul>
-            <a href="main.html"><img src="" alt="logo"></a>
-            <li><a class="active" href="#home">Graphs</a></li>
-            <li><a href="#news">Global</a></li>
-            <li><a href="#contact">Emergency Contact</a></li>
-            <li style="float:right"><a href="#about">My Account</a></li>
+        <!-- Links -->
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="#section1">Statistics</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#section2">Graphs</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#section3">Emergency Contacts</a>
+            </li>
         </ul>
+    </nav>
 
+    <!-- Section 1 -->
+    <div id="section1" class="container-fluid statistics section">
     </div>
+
+    <!-- Section 2 -->
+    <div id="section2" class="container-fluid graphs section">
+    </div>
+
+    <!-- Section 3 -->
+    <div id="section3" class="container-fluid emergency section">
+    </div>
+
 </body>
