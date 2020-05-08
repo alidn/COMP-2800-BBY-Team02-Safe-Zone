@@ -121,3 +121,10 @@ td {
     margin-top: 50px;
     font-size: 20px;
 }
+
+.gameOver-content button:hover{
+    background-color: #157c90b7;
+    color: white;
+    border:solid white 1px;
+    cursor: pointer;
+}
