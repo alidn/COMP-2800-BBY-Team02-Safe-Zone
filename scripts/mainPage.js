@@ -7,7 +7,7 @@ function game() {
   }
   
   function leaderboard() {
-    location.replace('leaderboard.html');
+    location.replace('http://localhost:4000/leaderboard');
   }
   
   function study() {
