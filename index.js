@@ -10,11 +10,36 @@ let app = express();
 const uri = "mongodb+srv://zas:zastv@cluster0-vztfn.mongodb.net/test?retryWrites=true&w=majority";
 const client = new MongoClient(uri, { useNewUrlParser: true });
 client.connect(err => {
-  console.log(err);
+  // const collection = client.db("game").collection("users");
+  
+  client.close();
 });
 
 
-app.get("leaderboard", (req, res) => {
-  const collection = client.db("game").collection("users");
-  res.render("views/leaderboard.ejs", collection);
+app.get("/leaderboard", (req, res) => {
+  collection = [
+    {
+      id: 1,
+      score: 10,
+      time:1.5
+    },
+    {
+      id: 2,
+      score: 15,
+      time:2.3
+    },
+    {
+      id: 3,
+      score: 20,
+      time:2.5
+    },
+    {
+      id: 4,
+      score: 1254,
+      time:6.3
+    }
+  ]
+  res.render("leaderboard", {userArray:collection});
 })
+
+app.listen(4000);
