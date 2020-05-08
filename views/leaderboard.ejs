@@ -4,6 +4,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <style>
+     
+        .tooltiptext {
+        visibility: hidden;
+        background-color: black;
+        color: #fff;
+        position: absolute;
+        z-index: 1;
+      }
+      
+      #hover:hover .tooltiptext {
+        visibility: visible;
+      }
+      </style>
 </head>
 <body>
     <table class="table">
@@ -19,7 +33,7 @@
         <% for(let i = 0;i < userArray.length; i++){%>
           <tr <%= i%2 ? `class=table-dark` : `` %> >
             <th scope="row"><%= i+1 %></th>
-            <td><%= userArray[i].username %></td>
+            <td id="hover"><%= userArray[i].username %> <span class="tooltiptext"><%= userArray[i].email %></span></td> 
             <td><%= userArray[i].scores[0].score %></td>
             <td><%= userArray[i].scores[0].dateAchieved %></td>
           </tr>
