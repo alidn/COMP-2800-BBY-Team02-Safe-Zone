@@ -6,46 +6,50 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Safe-Zone Study Page</title>
     <link rel="stylesheet" type="text/css" href="../styling/studyPage.css" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 
-<body>
-    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-        <!-- Brand/logo -->
-        <a class="navbar-brand" href="#">
-            <img src="/images/nav.png" alt="logo" style="width:150px;">
-        </a>
-
-        <!-- Links -->
-        <ul class="navbar-nav">
-            <li class="nav-item">
-                <a class="nav-link" href="#section1">Statistics</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#section2">Graphs</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#section3">Emergency Contacts</a>
-            </li>
-        </ul>
+<body data-spy="scroll" data-target=".navbar" data-offset="50">
+    <!------------------------Navbar----------------------->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="main.html"><img src="/images/nav.png" alt="Logo"></a>
+            </div>
+            <div>
+                <div class="collapse navbar-collapse" id="myNavbar">
+                    <ul class="nav navbar-nav">
+                        <li><a href="#section1">Statistics</a></li>
+                        <li><a href="#section2">Graphical</a></li>
+                        <li><a href="#section3">Emergency Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
     </nav>
 
-    <!-- Section 1 -->
-    <div id="section1" class="container-fluid statistics section">
-        <h1 style="margin-bottom: 20cm;"> Statistics section</h1> 
+    <!------------------------Section 1----------------------->
+    <div id="section1" class="container-fluid">
+        <h1>Statistics</h1>
     </div>
 
-    <!-- Section 2 -->
-    <div id="section2" class="container-fluid graphs section">
-        <h1 style="margin-bottom: 20cm;"> Graphs section</h1> 
+    <!------------------------Section 2----------------------->
+    <div id="section2" class="container-fluid">
+        <h1>Graphical</h1>
     </div>
 
-    <!-- Section 3 -->
-    <div id="section3" class="container-fluid emergency section">
-        <h1 style="margin-bottom: 20cm;"> Emergency contact section </h1>
+    <!------------------------Section 3----------------------->
+    <div id="section3" class="container-fluid">
+        <h1>Emergency Contact</h1>
     </div>
 
 </body>
+
+</html>

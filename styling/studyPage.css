@@ -1,0 +1,29 @@
+body {
+    position: relative;
+}
+
+#section1 {
+    padding-top: 50px;
+    height: 500px;
+    color: black;
+    background-color: #53c6a2;
+}
+
+#section2 {
+    padding-top: 50px;
+    height: 500px;
+    color: #fff;
+    background-color: #228c94;
+}
+
+#section3 {
+    padding-top: 50px;
+    height: 500px;
+    color: #fff;
+    background-color: #056a8b;
+}
+
+.navbar-header img{
+    width: 50px;
+    margin-top: -15px;
+}
