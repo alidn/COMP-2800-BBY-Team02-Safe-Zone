@@ -12,16 +12,16 @@
             <th>Ranking</th>
             <th>Name</th>
             <th>Score</th>
-            <th>Time(min)</th>
+            <th>Date</th>
           </tr>
         </thead>
         <tbody>
-        <% for(let i = 0;i < userArray.length; i++){%>
+        <% for(let i = 0;i < userArray[0].length; i++){%>
           <tr <%= i%2 ? `class=table-dark` : `` %> >
             <th scope="row"><%= i+1 %></th>
-            <td><%= userArray[i].id %></td>
-            <td><%= userArray[i].score %></td>
-            <td><%= userArray[i].time %></td>
+            <td><%= userArray[0][i].username %></td>
+            <td><%= userArray[0][i].scores[0].score %></td>
+            <td><%= userArray[0][i].scores[0].dateAchieved %></td>
           </tr>
         <% } %>
           
