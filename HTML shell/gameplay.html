@@ -6,6 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Safe-Zone Game</title>
 
+    <link rel="apple-touch-icon" sizes="180x180" href="../images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../images/favicon-16x16.png">
+
     <link rel="stylesheet" type="text/css" href="../styling/gameplay.css" />
 
 </head>
@@ -18,6 +22,36 @@
             <h3 class="diff">Please select game mode: </h3>
             <a href="#" onclick="withSD()" class="mode">With Social-Distancing</a>
             <a href="#" onclick="withoutSD()" class="mode">Without Social-Distancing</a>
+
+            <button id="myBtn">Play with Others</button>
+        </div>
+    </div>
+
+
+
+    <!-- Popup to invite other players to game -->
+    <div id="myModal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="close">&times;</span>
+                <h2>Searching for Players...</h2>
+                <hr>
+            </div>
+            <div class="modal-body">
+                <p>Nobody wants to play with you ... go find some friends</p>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div id="gameplay" class="gameplay">
+        <div class="gameplay-content">
+            <div id="score">
+                <h1>Score: 0</h1>
+            </div>
         </div>
     </div>
 
