@@ -178,7 +178,12 @@ class DatabaseClient {
     this.users.remove();
   }
 
-  async topUsers(n) {}
+  /**
+  * @param {Number} n - the number of top users to returns. 
+  */ 
+  async topUsers(n) {
+  }
 }
 
+// module.exports = DatabaseClient;
 exports.DatabaseClient = DatabaseClient;
