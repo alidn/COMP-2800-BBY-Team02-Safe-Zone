@@ -14,6 +14,8 @@ document.getElementById("signInSubmitBtn").onclick = async function (event) {
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
+      mode: "no-cors",
+      credentials: "same-origin",
     },
     body: JSON.stringify(body),
   });
