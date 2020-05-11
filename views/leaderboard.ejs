@@ -4,6 +4,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="apple-touch-icon" sizes="180x180" href="../images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../images/favicon-16x16.png">
+    <link rel="icon" href="../images/favicon.ico"/>
     <style>
      
         .tooltiptext {
@@ -17,23 +21,26 @@
       #hover:hover .tooltiptext {
         visibility: visible;
       }
+      body{
+        background-color: darkcyan;
+      }
       </style>
 </head>
 <body>
     <table class="table">
         <thead>
-          <tr class=table-primary>
+          <tr class=table-secondary>
             <th>Ranking</th>
             <th>Name</th>
-            <th onclick="sortUsers">Highest Score</th>
+            <th>Highest Score</th>
             <th>Date</th>
           </tr>
         </thead>
         <tbody>
         <% for(let i = 0;i < userArray.length; i++){%>
-          <tr <%= i%2 ? `class=table-dark` : `` %> >
+          <tr <%= i%2 ? `class=table-dark` : `class=table-light` %> >
             <th scope="row"><%= i+1 %></th>
-            <td id="hover"><%= userArray[i].username %> <span class="tooltiptext"><%= userArray[i].email %></span></td> 
+            <td id="hover"><i><%= userArray[i].username %> <span class="tooltiptext"><%= userArray[i].email %></i></span></td> 
             <td><%= userArray[i].scores[0].score %></td>
             <td><%= userArray[i].scores[0].dateAchieved %></td>
           </tr>
