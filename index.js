@@ -23,7 +23,7 @@ app.get("/leaderboard", (req, res) => {
   res.render("leaderboard", { userArray: collectionArray });
 });
 
-app.listen(4000);
+app.listen(process.env.PORT || 4000);
 
 //This function will go through every user and sort the scores from highest to lowerst
 function sortScores() {

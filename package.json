@@ -13,7 +13,7 @@
     "eslint": "^6.8.0"
   },
   "scripts": {
-    "starts": "node index.js",
+    "start": "node index.js",
     "test": "jest"
   },
   "repository": {
