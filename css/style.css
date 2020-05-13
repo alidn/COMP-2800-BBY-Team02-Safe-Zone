@@ -46,4 +46,11 @@ body{
 a {
     color: #53c6a2;
 }
-        
+.addFriendBtn {
+    border: 2px solid #53c6a2;
+    background-color: #d9e9e4;
+    font-size: 13px;
+}
+.addFriendBtn:hover {
+    background-color: #53c6a2;
+}
