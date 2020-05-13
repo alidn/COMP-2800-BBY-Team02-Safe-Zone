@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Safe-Zone Contact Us</title>
+    <link href="../styling/mainPage.css" rel="stylesheet" type="text/css">
+    <link href="../styling/introjs.css" rel="stylesheet" type="text/css">
+
+    <link href="../styling/contactus.css" rel="stylesheet" type="text/css">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="../images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../images/favicon-16x16.png">
+    <link rel="icon" href="../images/favicon.ico"/>
+</head>
+
+<body>
+    <div id="logo">
+        <img src="../images/logo.png" alt="logo" style="width:100px; height:100px; padding: 14vw;">
+    </div>
+
+    <div id="account">
+        <a href="myAccount.html" data-step="2" data-intro="Click here to view your profile!" >My Account</a>
+    </div>
+
+    <div id="about">
+        <a href="aboutus.html" data-step="1" data-intro="Click here to learn a little more about the developers!" >About Us</a>
+    </div>
+
+    <!-- This needs to be styled and fixed -->
+    <div id="contact">
+        <a href="contactUs.html" data-step="1" data-intro="Click here to contact the development team!" >Contact Us</a>
+    </div>
+
+    <div id="contactUs">
+
+        <!-- need to send to database -->
+        <div class="container">
+            <form action="/action_page.php">
+                <label for="fname">First Name</label>
+                <input type="text" id="fname" name="firstname" placeholder="Your name..">
+            
+                <label for="lname">Last Name</label>
+                <input type="text" id="lname" name="lastname" placeholder="Your last name..">
+            
+                <label for="email">Email</label>
+                <input type="text" id="email" name="email" placeholder="Email Address..">
+            
+                <label for="subject">Subject</label>
+                <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
+            
+                <input type="submit" value="Submit">
+              </form>
+          </div>
+
+    </div>
+
+    <script src="../scripts/intro.js"></script>
+    <script src="../scripts/mainPage.js"></script>
+</body>
+
+</html>
