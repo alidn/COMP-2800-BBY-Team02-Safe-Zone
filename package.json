@@ -6,6 +6,7 @@
   "dependencies": {
     "ejs": "^3.1.2",
     "express": "^4.17.1",
+    "intro.js": "^2.9.3",
     "jest": "^25.5.3",
     "mongodb": "^3.5.7"
   },

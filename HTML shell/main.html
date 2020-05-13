@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Safe-Zone Main</title>
     <link href="../styling/mainPage.css" rel="stylesheet" type="text/css">
+    <link href="../styling/introjs.css" rel="stylesheet" type="text/css">
     <link rel="apple-touch-icon" sizes="180x180" href="../images/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="../images/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="../images/favicon-16x16.png">
@@ -14,15 +15,15 @@
 
 <body>
     <div id="logo">
-        <img src="../images/logo.png" alt="logo">
+        <img src="../images/logo.png" alt="logo" style="width:100px; height:100px; padding: 14vw;">
     </div>
 
     <div id="account">
-        <a href="myAccount.html">My Account</a>
+        <a href="myAccount.html" data-step="2" data-intro="Click here to view your profile!" >My Account</a>
     </div>
 
     <div id="about">
-        <a href="aboutus.html">About Us</a>
+        <a href="aboutus.html" data-step="1" data-intro="Click here to learn a little more about the developers!" >About Us</a>
     </div>
 
     <div class="buttonHolder">
@@ -32,13 +33,15 @@
         </br>
 
         <div>
-            <button class="button" onclick="game()">Single Player</button></br>
-            <button class="button" onclick="multiplayer()">Multiplayer</button></br>
-            <button class="button" onclick="leaderboard()">Leaderboard</button></br>
-            <button class="button" onclick="study()">Learn More</button></br>
+            <button class="button" onclick="game()" data-step="3" data-position="left" data-intro="Click here to play the game alone" >Single Player</button></br>
+            <button class="button" onclick="multiplayer()" data-step="4" data-position="left"  data-intro="Click here to play the game with other users!">Multiplayer</button></br>
+            <button class="button" onclick="leaderboard()" data-step="5" data-position="left"  data-intro="Click here to view the leaderboard rankings!">Leaderboard</button></br>
+            <button class="button" onclick="study()" data-step="6" data-position="left"  data-intro="Click here to learn more about COVID-19">Learn More</button></br>
+            <a class="button" href="javascript:introJs().setOption('showProgress',true).start();">Demo</a>
         </div>
     </div>
 
+    <script src="../scripts/intro.js"></script>
     <script src="../scripts/mainPage.js"></script>
 </body>
 
