@@ -12,17 +12,25 @@
      
         .tooltiptext {
         visibility: hidden;
-        background-color: black;
-        color: #fff;
+        background-color: #53C6A2;
+        color: black;
         position: absolute;
         z-index: 1;
+        border-radius: 25px;
+        width: 20%;
+        text-align: center;
+        border: black solid 1px;
       }
       
       #hover:hover .tooltiptext {
         visibility: visible;
       }
       body{
-        background-color: darkcyan;
+        background-color: #056A8B;
+      }
+      b{
+        font-weight:bold;
+        font-style: normal;
       }
       </style>
 </head>
@@ -40,7 +48,7 @@
         <% for(let i = 0;i < userArray.length; i++){%>
           <tr <%= i%2 ? `class=table-dark` : `class=table-light` %> >
             <th scope="row"><%= i+1 %></th>
-            <td id="hover"><i><%= userArray[i].username %> <span class="tooltiptext"><%= userArray[i].email; userArray[i].friendsList %></i></span></td> 
+            <td id="hover"><i><%= userArray[i].username %> <span class="tooltiptext"><%= userArray[i].email  %><br><b><%= userArray[i].friendsList %></b></i></span></td> 
             <td><%= userArray[i].scores[0].score %></td>
             <td><%= userArray[i].scores[0].dateAchieved %></td>
           </tr>
