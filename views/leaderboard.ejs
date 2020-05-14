@@ -40,7 +40,7 @@
         <% for(let i = 0;i < userArray.length; i++){%>
           <tr <%= i%2 ? `class=table-dark` : `class=table-light` %> >
             <th scope="row"><%= i+1 %></th>
-            <td id="hover"><i><%= userArray[i].username %> <span class="tooltiptext"><%= userArray[i].email %></i></span></td> 
+            <td id="hover"><i><%= userArray[i].username %> <span class="tooltiptext"><%= userArray[i].email; userArray[i].friendsList %></i></span></td> 
             <td><%= userArray[i].scores[0].score %></td>
             <td><%= userArray[i].scores[0].dateAchieved %></td>
           </tr>

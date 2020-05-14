@@ -29,7 +29,7 @@ class DatabaseClient {
    * @return {Object} - An object with 'ok' and 'error' fields.
    */
   async addUser(userInfo) {
-    userInfo = { ...userInfo, scores: [] };
+    userInfo = { ...userInfo, scores: [], friendsList: [] };
     if (userInfo.password === undefined) {
       return { ok: false, error: "the password is not valid" };
     }
