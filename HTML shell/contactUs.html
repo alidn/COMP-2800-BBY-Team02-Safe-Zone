@@ -36,25 +36,23 @@
 
     <div id="contactUs">
 
-        <!-- need to send to database -->
-        <div class="container">
-            <form action="/action_page.php">
-                <label for="fname">First Name</label>
-                <input type="text" id="fname" name="firstname" placeholder="Your name..">
-            
-                <label for="lname">Last Name</label>
-                <input type="text" id="lname" name="lastname" placeholder="Your last name..">
-            
-                <label for="email">Email</label>
-                <input type="text" id="email" name="email" placeholder="Email Address..">
-            
-                <label for="subject">Subject</label>
-                <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
-            
-                <input type="submit" value="Submit">
-              </form>
-          </div>
 
+        <div class="container">  
+            <form id="suggestion_box" action="" method="post">
+              <h3>Suggestion box </h3>
+
+          
+              <fieldset>
+                <textarea placeholder="Tell us what you think..." tabindex="5" name="suggestion_text" required></textarea>
+              </fieldset>
+              <fieldset>
+                <button name="submit" type="submit" id="suggestion_box" data-submit="...Sending" value="text to send">Submit</button>
+              </fieldset>
+            </form>
+        </div>
+        <div>
+            <h4>Or email us at: <a href="mailto:safezonemanagment@gmail.com">safezonemanagment@gmail.com</a></h4>
+        </div>
     </div>
 
     <script src="../scripts/intro.js"></script>
