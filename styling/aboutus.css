@@ -8,6 +8,10 @@ body{
 
 }
 
+#blurb {
+    margin: 2vw;
+}
+
 .buttonHolder {
     text-align: center;
 }
