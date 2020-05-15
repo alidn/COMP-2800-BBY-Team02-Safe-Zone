@@ -61,10 +61,10 @@ export default function SingleMode(props) {
   );
 
   useEffect(() => {
-    let id = Math.floor(Math.random()
-    props.socket.emit("createRoom", 23456);
+    let id = Math.floor(Math.random() * 10000);
+    props.socket.emit("createRoom", id);
     props.socket.emit("join", {
-      id: 23456,
+      id: id,
       username: sessionStorage.getItem("username"),
     });
   }, []);
