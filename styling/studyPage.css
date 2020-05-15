@@ -7,17 +7,19 @@ html {
 }
 
 #section1 {
-  padding-top: 50px;
-  height: 500px;
-  color: black;
-  background-color: #53c6a2;
+    padding-top: 50px;
+    height: 500px;
+    color: white;
+    background-color: #53c6a2;
+    text-align: center;
 }
 
 #section2 {
-  padding-top: 50px;
-  height: 500px;
-  color: #fff;
-  background-color: #228c94;
+    padding-top: 50px;
+    height: 500px;
+    color: #fff;
+    background-color: #228c94;
+    text-align: center;
 }
 
 #section3 {
@@ -27,17 +29,24 @@ html {
   background-color: #056a8b;
 }
 
-.navbar-header img {
-  width: 50px;
-  margin-top: -15px;
+#section3 h1{
+    text-align: center;
 }
 
-#account {
-  float: right;
-  text-decoration: none;
-  font-size: 25px;
-  color: white;
-  margin-top: 10px;
-  padding-left: 8px;
-  border-left: 1px solid white;
+.navbar-header img{
+    width: 50px;
+    margin-top: -15px;
+}
+
+#account{
+    float: right;
+    text-decoration: none;
+    font-size: 15px;
+    color: white;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    padding-left: 8px;
+    padding-right: 8px;
+    border-left: 1px solid white;
+    border-right: 1px solid white;
 }
