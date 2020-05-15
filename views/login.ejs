@@ -1,0 +1,238 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../styling/loginPage.css">
+    <title>Login</title>
+
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="icon" href="favicon.ico" />
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .box {
+            position: absolute;
+            width: 300px;
+            padding: 40px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+
+        .box input[type="button"] {
+            border: 0;
+            background: none;
+            display: block;
+            margin: 20px auto;
+            text-align: center;
+            border: 2px solid rgb(81, 198, 161);
+            padding: 14px 40px;
+            border-radius: 30px;
+            transition: 0.25s;
+            cursor: pointer;
+        }
+
+        .box input[type="button"]:hover {
+            background: #51c6a1;
+        }
+
+        .box input[type="button"]:active {
+            transform: scale(0.9);
+        }
+
+        .submitBtn {
+            border: 0;
+            background: none;
+            display: block;
+            margin: 20px auto;
+            text-align: center;
+            border: 2px solid rgb(81, 198, 161);
+            padding: 7px 40px;
+            border-radius: 30px;
+            transition: 0.25s;
+            cursor: pointer;
+        }
+
+        .submitBtn:hover {
+            background: #51c6a1;
+        }
+
+        #logoOnLogin {
+            width: 250px;
+            height: 100px;
+            margin-left: -22px;
+        }
+
+        #logoModal {
+            width: 250px;
+            height: 100px;
+            margin-left: auto;
+        }
+
+        .modalInput {
+            width: 50%;
+            display: block;
+            margin: 20px auto;
+            border: 1px solid rgb(55, 189, 212);
+            border-radius: 3px;
+            padding-left: 5px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="box">
+        <img id="logoOnLogin" src="safezonelogo_2.png">
+        <input type="button" value="SIGN-IN" id="loginInBtn" data-toggle="modal" data-target="#signInModal">
+        <input type="button" value="SIGN-UP" id="signUpBtn" data-toggle="modal" data-target="#signUpModal">
+    </div>
+
+    <!-- Modal For SignUp-->
+    <div class="modal" id="signUpModal">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <img id="logoModal" src="safezonelogo_2.png">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <form class="signTextFields" id="signupform">
+                        <input name="emailInput" type="text" class="modalInput" placeholder="Email">
+                        <input name="usernameInput" type="text" class="modalInput" placeholder="Username">
+                        <input name="passwordInput" type="password" class="modalInput" placeholder="Password">
+                        <input type="button" id="signupBtn" value="SIGN-UP">
+                    </form>
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal For SignUp-->
+    <div class="modal" id="signInModal">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <img id="logoModal" src="safezonelogo_2.png">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <form class="signTextFields" action="/signin" method="POST">
+                        <input name="usernameInput" type="text" class="modalInput" placeholder="Username">
+                        <input name="passwordInput" type="password" class="modalInput" placeholder="Password">
+                        <input type="submit" id="signinBtn" value="SIGN-IN">
+                    </form>
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let signUpSubmitBtn = document.getElementById("signUpSubmitBtn");
+
+        // const createCube = () => {
+        //     const template = document.getElementById("cube-template");
+        //     const fragment = document.importNode(template.content, true);
+        //     return fragment;
+        // };
+
+       
+        console.log("Hello");
+
+        const getDistance = (state, rotate) =>
+            ["x", "y"].reduce((object, axis) => {
+                object[axis] = Math.abs(state[axis] + rotate[axis]);
+                return object;
+            }, {});
+
+        const getRotation = (state, size, rotate) => {
+            const axis = rotate.x ? "Z" : "Y";
+            const direction = rotate.x > 0 ? -1 : 1;
+
+            return `
+    rotateX(${state.x + rotate.x}deg)
+    rotate${axis}(${direction * (state.y + rotate.y)}deg)
+    translateZ(${size / 2}px)
+  `;
+        };
+
+        // Linear interpolation between a and b
+        // Example: (100, 200, .5) = 150
+        const interpolate = (a, b, i) => a * (1 - i) + b * i;
+
+        const getShading = (tint, rotate, distance) => {
+            const darken = ["x", "y"].reduce((object, axis) => {
+                const delta = distance[axis];
+                const ratio = delta / 180;
+                object[axis] = delta > 180 ? Math.abs(2 - ratio) : ratio;
+                return object;
+            }, {});
+
+            if (rotate.x) darken.y = 0;
+            else {
+                const { x } = distance;
+                if (x > 90 && x < 270)
+                    directions.forEach((axis) => (darken[axis] = 1 - darken[axis]));
+            }
+
+            const alpha = (darken.x + darken.y) / 2;
+            const blend = (value, index) =>
+                Math.round(interpolate(value, tint.shading[index], alpha));
+
+            const [r, g, b] = tint.color.map(blend);
+            return `rgb(${r}, ${g}, ${b})`;
+        };
+
+        
+        $("#signupBtn").on("click", data => {
+            console.log($("#signupform").serialize())
+            $.ajax({
+                url: 'signup/',
+                type: "POST",
+                data: $("#signupform").serialize(),
+                success: function (response) {
+                    //set local storage to username and session id and redirect to myAccount
+                    localStorage.setItem("username", )
+                },
+                fail: res => {
+                    alert('Email already exists')
+                }
+            });
+        })
+
+    </script>
+</body>
+
+</html>

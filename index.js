@@ -5,6 +5,7 @@ let collectionArray = [];
 let app = express();
     app.use(express.urlencoded({extended: true}));
     app.use(express.static("HTML shell"));
+    app.use(express.static("images"));
     app.set("view engine", "ejs");
 
 
@@ -12,11 +13,12 @@ const uri = "mongodb+srv://zas:zastv@cluster0-vztfn.mongodb.net/test?retryWrites
 const client = new MongoClient(uri, { useNewUrlParser: true });
 
 client.connect(async err => {
-  
   const collection = client.db("game").collection("users");
+  app.locals.collection = collection;
   let x = collection.find().toArray(function(err, docs) {
-   collectionArray = docs ; 
+    collectionArray = docs ; 
   });
+  app.listen(4000);
 });
 
 
@@ -25,15 +27,77 @@ app.get("/leaderboard", (req, res) => {
   res.render("leaderboard", {userArray: collectionArray});
 })
 
-app.listen(4000);
+app.get("/myAccount", (req, res) => {
+  res.render("myAccount")
+})
+
+app.get("/login", (req, res) => {
+  res.render("login")
+})
+
+app.post("/signup", (req, res) =>{
+  // console.log(req.body);
+  // console.log(req.body.emailInput);
+  // console.log(req.body.usernameInput);
+  // console.log(req.body.passwordInput);
+  let userColl = app.locals.collection;
+  let x = userColl.find().toArray(function(err, docs) {
+
+    //Loop through all users
+    for(let i=0 ; i<docs.length ; i++){
+      //Check to see if form data already exists in db
+      if(docs[i].username == req.body.usernameInput){
+        console.log("THE USERNAME EXISTS!")
+      }
+      //Check to see if form data already exists in db
+      if(docs[i].email == req.body.emailInput){
+        res.json({success: false})
+      }
+
+    }
+    res.json({success: true})
+  });
+  
+  
+})
+
+app.post("/signin", (req, res) =>{
+
+  console.log(req.body);
+  console.log(req.body.usernameInput);
+  console.log(req.body.passwordInput);
+})
+
+
 
 //This function will go through every user and sort the scores from highest to lowerst 
 function sortScores(){
+  console.log(collectionArray)
   for(let i = 0; i< collectionArray.length; i++){
-    collectionArray[i].scores.sort((a,b)=> (b.score > a.score) ? 1 : -1);
+ 
+    collectionArray[i].scores.sort( (a,b) => {
+      if(b.scores && a.scores){
+        return (b.score > a.score) ? 1 : -1
+      } else if(a.scores && !b.scores) {
+        return -1;
+      } else if(b.scores && !a.scores) {
+        return 1;
+      } else {
+        return 1
+      }
+    });
   }
-  collectionArray.sort((a,b) => (b.scores[0].score > a.scores[0].score)? 1 : -1); // sorts users collection by the highest scores.
+  collectionArray.sort((a,b) => {
+    if(b.scores.length && a.scores.length){
+      return b.scores[0].score > a.scores[0].score ? 1 : -1
+    } else if(a.scores.length && !b.scores.length) {
+      return -1;
+    } else if(b.scores.length && !a.scores.length) {
+      return 1;
+    } else {
+      return -1
+    }
+  }); // sorts users collection by the highest scores.
 }
-
 
 
