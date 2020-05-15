@@ -75,19 +75,18 @@ app.post("/signup", (req, res) => {
 
 app.post("/myAccount", async (req, res) => {
   if (req.body.submit === 'ADD FRIEND') {
-    console.log("Here " + req.body.friendID);
     let userColl = app.locals.collection;
     let user = await userColl.findOne({ username: req.body.friendID })
 
     if (user) {
       //add friendID to freindsList if its not already there 
-      console.log("        we are herewegqewrgqewgqwerg");
-
       try {
         userColl.updateOne(
-          { "username": "some_user" },
-          {  $push: { "friendsList": req.body.friendID } },
+          { "username": req.body.ownUser },
+          { $push: { "friendsList": req.body.friendID } },
+          { upsert: true } 
         );
+        res.render("myAccount");
       } catch (e) {
         print(e);
       }
@@ -95,7 +94,12 @@ app.post("/myAccount", async (req, res) => {
       //alert that the usre doesnt exist in teh database
     }
   } else if (req.body.submit === 'REMOVE FRIEND') {
-
+    let userColl = app.locals.collection;
+    userColl.update(
+      { username: req.body.ownUser },
+      { $pull: { friendsList: { $in: [req.body.friendID] } } },
+    )
+    res.render("myAccount");
   } else {
     let userColl = app.locals.collection;
     let user = await userColl.findOne({ username: req.body.username })

@@ -121,7 +121,8 @@
                                             <div class="col-md-9 col-6">
                                                 <form action="/myAccount" method="POST">
                                                     <input type="text" name="friendID" id="addUsername" required>
-                                                    <input type="submit" class="addFriendBtn" name="submit" id="addFriendbtn" value="ADD FRIEND">
+                                                    <input type="text" name="ownUser" id="normalUsername" style="display:none">
+                                                    <input type="submit" class="addFriendBtn" name="submit" id="addFriendbtn"  value="ADD FRIEND">
                                                     <input type="submit" class="subFriendBtn" name="submit" id="subFriendbtn" value="REMOVE FRIEND">
                                                   </form> 
                                             </div>
@@ -140,6 +141,7 @@
     </div>
     <script>
         $(document).ready(async function () {
+            document.getElementById("normalUsername").value = localStorage.getItem("username");
             let data = await fetch("/myAccount", {
                 method: "POST",
                 body: JSON.stringify({ username: localStorage.getItem("username") }),
@@ -161,6 +163,7 @@
                     // $('.friendsListItem').first().html("<p>" + user.friendsList[0] + "</p>").appendTo("#friendsList");
                     for (let i = 0; i < user.friendsList.length; i++) {
                         if(user.friendsList[i] == localStorage.getItem("username")){
+
                         }else{
                             $('.friendsListItem').first().clone().html("<p>" + user.friendsList[i] + "</p>").appendTo("#friendsList");
                             $(document.createElement("br")).appendTo('#friendsList');
@@ -172,6 +175,13 @@
                 $('#emailFeild').html("<p>" + user.email + "<p>")
                 $('#highestScoreFeild').html("<p>" + highstScore + "<p>")
                 $('#gamesPlayedFeild').html("<p>" + user.scores.length + "<p>")
+                    
+                    // $('#addFriendbtn').on('click', () => {
+                    //     // window.location.href = "http://localhost:4000/myAccount"
+                    // });
+                    // $('#subFriendbtn').on('click', () => {
+                    //     // window.location.href = "http://localhost:4000/myAccount"
+                    // });
             } else {
                 $('#usernameFeild').html("<p><p>")
                 $('#emailFeild').html("<p><p>")
