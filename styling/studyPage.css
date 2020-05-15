@@ -1,43 +1,39 @@
 body {
-  position: relative;
-} 
-
-html {
-  scroll-behavior: smooth;
+    position: relative;
 }
 
 #section1 {
-  padding-top: 50px;
-  height: 500px;
-  color: black;
-  background-color: #53c6a2;
+    padding-top: 50px;
+    height: 500px;
+    color: black;
+    background-color: #53c6a2;
 }
 
 #section2 {
-  padding-top: 50px;
-  height: 500px;
-  color: #fff;
-  background-color: #228c94;
+    padding-top: 50px;
+    height: 500px;
+    color: #fff;
+    background-color: #228c94;
 }
 
 #section3 {
-  padding-top: 50px;
-  height: 500px;
-  color: #fff;
-  background-color: #056a8b;
+    padding-top: 50px;
+    height: 500px;
+    color: #fff;
+    background-color: #056a8b;
 }
 
-.navbar-header img {
-  width: 50px;
-  margin-top: -15px;
+.navbar-header img{
+    width: 50px;
+    margin-top: -15px;
 }
 
-#account {
-  float: right;
-  text-decoration: none;
-  font-size: 25px;
-  color: white;
-  margin-top: 10px;
-  padding-left: 8px;
-  border-left: 1px solid white;
+#account{
+    float: right;
+    text-decoration: none;
+    font-size: 25px;
+    color: white;
+    margin-top: 10px;
+    padding-left: 8px;
+    border-left: 1px solid white;
 }

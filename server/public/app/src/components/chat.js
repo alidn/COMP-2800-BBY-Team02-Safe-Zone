@@ -7,15 +7,11 @@ export default function Chat(props) {
 
   props.socket.off("msg").on("msg", (message) => {
     setReceived(true);
-    console.log("Received message", message);
-    console.log(messages);
     setMessages((prev) => prev.concat(message));
-    setMessages((prev) => prev.slice(prev.length - 8, prev.length));
+    setMessages((prev) => prev.slice(prev.length - 12, prev.length));
   });
 
   let [message, setMessage] = useState("");
-
-  console.log(messages);
 
   let send = function () {
     console.log("sending", message);

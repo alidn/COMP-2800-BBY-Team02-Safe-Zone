@@ -8,6 +8,7 @@ import Main from "./components/main";
 import EmptyLobby from "./components/NoLobby";
 import { Button } from "antd";
 import io from "socket.io-client";
+import SingleMode from "./components/singlePlayer";
 
 function App() {
   const socket = io.connect();
@@ -26,6 +27,9 @@ function App() {
             >
               <LoginForm socket={socket} />
             </div>
+          </Route>
+          <Route path="/single">
+            <SingleMode socket={socket} />
           </Route>
           <Route path="/login">
             <div

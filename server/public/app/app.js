@@ -96,7 +96,7 @@ io.on("connect", (socket) => {
           console.log(
             `number of people who wan tto play: ${wantToPlayInRoom.length}`
           );
-          if (rooms.get(roomId).length / 2 < wantToPlayInRoom.length) {
+          if (rooms.get(roomId).length <= 1 || rooms.get(roomId).length / 2 < wantToPlayInRoom.length) {
             io.to(roomId).emit("start");
           } else {
             console.log(`Sending people who want to play: ${wantToPlayInRoom}`);
@@ -111,6 +111,7 @@ io.on("connect", (socket) => {
       });
 
       socket.on("end-round", () => {
+        console.log("round ended"); 
         wantToPlay.set(roomId, []);
       });
 
