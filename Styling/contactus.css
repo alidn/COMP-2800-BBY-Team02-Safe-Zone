@@ -30,6 +30,7 @@ h3 {
 	width:100%;
 	margin:0 auto;
 	position:relative;
+	margin-top: 10vh;
 }
 
 #suggestion_box textarea, #suggestion_box button[type="submit"] { 
@@ -43,7 +44,7 @@ h3 {
 }
 
 #suggestion_box h3 {
-	color: #F96;
+	color: #818181;
 	display: block;
 	font-size: 30px;
 	font-weight: 400;
@@ -88,18 +89,19 @@ fieldset {
 	cursor:pointer;
 	width:100%;
 	border:none;
-	background:#0CF;
+	background:#818181;
 	color:#FFF;
 	margin:0 0 5px;
 	padding:10px;
-	font-size:15px;
+	font-size:18px;
 }
 
 #suggestion_box button[type="submit"]:hover {
-	background:#09C;
-	-webkit-transition:background 0.3s ease-in-out;
-	-moz-transition:background 0.3s ease-in-out;
-	transition:background-color 0.3s ease-in-out;
+	background:#999999;
+	color: #444;
+	-webkit-transition:background 0.2s ease-in-out;
+	-moz-transition:background 0.2s ease-in-out;
+	transition:background-color 0.2s ease-in-out;
 }
 
 #suggestion_box button[type="submit"]:active { 
