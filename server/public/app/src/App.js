@@ -11,11 +11,13 @@ import io from "socket.io-client";
 
 function App() {
   const socket = io.connect();
+  const reload = () => window.location.reload();
 
   return (
     <div className="App">
       <Router>
         <Switch>
+          <Route path="/test.html" onEnter={reload} />
           <Route exact path="/">
             <div
               style={{

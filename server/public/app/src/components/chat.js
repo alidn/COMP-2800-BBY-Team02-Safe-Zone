@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from "react";
-import { List, Avatar, Input, Button, Space, Empty } from "antd";
+import { List, Avatar, Input, Button, Space, Empty, Divider } from "antd";
 
 export default function Chat(props) {
   let [messages, setMessages] = useState([]);
+  let [received, setReceived] = useState(false);
 
   props.socket.off("msg").on("msg", (message) => {
+    setReceived(true);
     console.log("Received message", message);
     console.log(messages);
     setMessages((prev) => prev.concat(message));
-    // setMessages((prev) => prev.slice(prev.length - 6, prev.length));
+    setMessages((prev) => prev.slice(prev.length - 8, prev.length));
   });
 
   let [message, setMessage] = useState("");
@@ -25,10 +27,22 @@ export default function Chat(props) {
   };
 
   return (
-    <div style={{ marginRight: "10px" }}>
+    <div
+      style={{
+        position: "relative",
+        border: "1px solid #1890FF",
+        padding: "30px",
+        marginRight: "10px",
+        marginLeft: "20px",
+        width: "500px",
+        borderRadius: "10px",
+      }}
+    >
+      <h1>Chatroom</h1>
+      <Divider />
       <List itemLayout="horizontal">
-        {messages === [] ? (
-          <Empty description={false} />
+        {!received ? (
+          <Empty description={"No message yet"} />
         ) : (
           messages.map((item) => (
             <List.Item>
@@ -42,10 +56,23 @@ export default function Chat(props) {
         )}
       </List>
       <Space />
-      <Input onChange={(e) => setMessage(e.target.value)}></Input>
-      <Button style={{ marginTop: "10px" }} onClick={send} type="primary">
-        Send
-      </Button>
+      <div style={{ position: "absolute", bottom: 0, marginBottom: "30px" }}>
+        <Input
+          placeholder={"Enter a message"}
+          size={"large"}
+          style={{ margin: "auto", width: "400px" }}
+          onChange={(e) => setMessage(e.target.value)}
+        ></Input>
+        <Divider type="vertical" />
+        <Button
+          size={"large"}
+          style={{ marginTop: "10px" }}
+          onClick={send}
+          type="primary"
+        >
+          Send
+        </Button>
+      </div>
     </div>
   );
 }

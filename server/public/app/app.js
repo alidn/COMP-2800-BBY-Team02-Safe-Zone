@@ -23,12 +23,14 @@ const server = http.createServer(app);
 let ids = [];
 let rooms = new Map();
 let scores = new Map();
+let wantToPlay = new Map();
 
 const io = socketIo(server);
 io.on("connect", (socket) => {
   let roomId;
   socket.on("join", ({ id, username }) => {
-      console.log("someone's tryina join ", id); console.log("room ids", ids);
+    console.log("someone's tryina join ", id);
+    console.log("room ids", ids);
     let joined = false;
     for (let i = 0; i < ids.length; i++) {
       if (ids[i] == id) {
@@ -76,10 +78,46 @@ io.on("connect", (socket) => {
         io.to(roomId).emit("position", { username: username, force: force });
       });
 
+      wantToPlay.set(roomId, []);
+      socket.on("start-round", (username) => {
+        console.log(`${username} wants to start the round`);
+        let alreadyIn = false;
+        let wantToPlayInRoom = wantToPlay.get(roomId);
+        for (let i = 0; i < wantToPlayInRoom.length; i++) {
+          if (wantToPlayInRoom[i] === username) {
+            alreadyIn = true;
+          }
+        }
+        if (!alreadyIn) {
+          wantToPlayInRoom.push(username);
+          console.log(
+            `number of all people in the room: ${rooms.get(roomId).length / 2}`
+          );
+          console.log(
+            `number of people who wan tto play: ${wantToPlayInRoom.length}`
+          );
+          if (rooms.get(roomId).length / 2 < wantToPlayInRoom.length) {
+            io.to(roomId).emit("start");
+          } else {
+            console.log(`Sending people who want to play: ${wantToPlayInRoom}`);
+
+            io.to(roomId).emit("want-to-start", wantToPlayInRoom);
+          }
+        } else {
+          console.log(`Sending people who want to play: ${wantToPlayInRoom}`);
+          io.to(roomId).emit("want-to-start", wantToPlayInRoom);
+        }
+        wantToPlay.set(roomId, wantToPlayInRoom);
+      });
+
+      socket.on("end-round", () => {
+        wantToPlay.set(roomId, []);
+      });
+
       socket.on("win", (username) => {
         console.log("Somybody won!");
 
-        io.to(roomId).emit("end", username);
+        io.to(roomId).emit("win", username);
       });
 
       socket.on("start-c", () => {
@@ -108,6 +146,7 @@ io.on("connect", (socket) => {
       console.log("all users", rooms.get(roomId));
     }
   });
+
   socket.on("createRoom", (room) => ids.push(room));
   socket.on("login", async ({ username, password }) => {
     console.log("checking ", username, password);

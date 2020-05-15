@@ -1,7 +1,7 @@
 let // eslint-disable-next-line no-undef
   Bodies = Matter.Bodies;
 
-const DOTS_INIITAL_LOCATION = {
+export const DOTS_INIITAL_LOCATION = {
   x: 50,
   y: 50,
 };

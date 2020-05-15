@@ -2,30 +2,30 @@ import Matter from "matter-js";
 
 let Bodies = Matter.Bodies;
 
-const DOTS_INIITAL_LOCATION = {
+export const DOTS_INIITAL_LOCATION = {
   x: 50,
   y: 50,
 };
-export const INIT_FORCE_COEFFICIENT = 1000;
-export const MOVEMENT_FORCE_COEFFICIENT = 10000;
+export const INIT_FORCE_COEFFICIENT = 100;
+export const MOVEMENT_FORCE_COEFFICIENT = 1000;
 export const status = {
   UNINFECTED: "uninfected",
   INFECTED: "infected",
   RECOVERED: "recovered",
 };
 export const colors = {
-  USER: "black",
-  UNINFECTED: "green",
-  INFECTED: "red",
+  USER: "#2884E0",
+  UNINFECTED: "#60e68f",
+  INFECTED: "#e66060",
   RECOVERED: "yellow",
   BORDER: "grey",
   ENEMY: "orange",
 };
-export const BORDER_OPACITY = 0.2;
+export const BORDER_OPACITY = 0.4;
 export const sizes = {
-  USER_RADIUS: 5,
-  BORDER_RADIUS: 25,
-  BOT_RADIUS: 5,
+  USER_RADIUS: 10,
+  BORDER_RADIUS: 45,
+  BOT_RADIUS: 20,
 };
 export const TRANSMISION_DISTANCE = 10000;
 
@@ -39,9 +39,12 @@ export function createDot(radius, color, isPaused) {
       frictionAir: 0,
       force: isPaused ? { x: 0, y: 0 } : getRandomInitialForce(),
       render: {
-        fillStyle: color || colors.UNINFECTED,
+        strokeStyle: color || colors.UNINFECTED,
+        fillStyle: "transparent",
+        lineWidth: 5
       },
       label: status.UNINFECTED,
+      opacity: 0.3,
     }
   );
   return dot;
@@ -73,7 +76,7 @@ export function updateColorsBasedOnStatus(dots) {
       case status.RECOVERED:
         newColor = colors.RECOVERED;
     }
-    dot.render.fillStyle = newColor;
+    dot.render.strokeStyle = newColor;
   });
 }
 
