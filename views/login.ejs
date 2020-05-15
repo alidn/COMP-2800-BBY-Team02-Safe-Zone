@@ -69,10 +69,10 @@
 
                 <!-- Modal body -->
                 <div class="modal-body">
-                    <form class="signTextFields" action="/signin" method="POST">
-                        <input name="usernameInput" type="text" class="modalInput" placeholder="Username">
-                        <input name="passwordInput" type="password" class="modalInput" placeholder="Password">
-                        <input type="submit" id="signinBtn" value="SIGN-IN">
+                    <form class="signTextFields" id="signinform">
+                        <input name="usernameInput" id="oldUsername" type="text" class="modalInput" placeholder="Username">
+                        <input name="passwordInput" id="oldPassword"type="password" class="modalInput" placeholder="Password">
+                        <input type="button" id="signinBtn" value="SIGN-IN">
                     </form>
                 </div>
 
@@ -86,20 +86,36 @@
     </div>
 
     <script>
-        let signUpSubmitBtn = document.getElementById("signUpSubmitBtn");
-
-        
         $("#signupBtn").on("click", data => {
-            console.log($("#signupform").serialize())
+            // console.log($("#signupform").serialize())
             $.ajax({
                 url: 'signup/',
                 type: "POST",
                 data: $("#signupform").serialize(),
                 success: res => {
                     if(res.success){
-                        //set local storage to username and session id and redirect to myAccount
+                        //set local storage to username and redirect to myAccount
                         localStorage.setItem("username", $('#newUsername').val());
                         localStorage.setItem("password", $('#newPassword').val());
+                        window.location.href = "http://localhost:4000/myAccount"
+                        
+                    }else{
+                        alert(res.error)
+                    }
+    
+                }
+            });
+        })
+        $("#signinBtn").on("click", data => {
+            $.ajax({
+                url: 'signin/',
+                type: "POST",
+                data: $("#signinform").serialize(),
+                success: res => {
+                    if(res.success){
+                        //set local storage to username and redirect to myAccount
+                        localStorage.setItem("username", $('#oldUsername').val());
+                        localStorage.setItem("password", $('#oldPassword').val());
                         window.location.href = "http://localhost:4000/myAccount"
                         
                     }else{

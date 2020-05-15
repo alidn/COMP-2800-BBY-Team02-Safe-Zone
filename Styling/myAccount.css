@@ -54,3 +54,11 @@ a {
 .addFriendBtn:hover {
     background-color: #53c6a2;
 }
+.subFriendBtn {
+    border: 2px solid #056A8b;
+    background-color: #d9e9e4;
+    font-size: 13px;
+}
+.subFriendBtn:hover {
+    background-color: #056A8b;
+}
