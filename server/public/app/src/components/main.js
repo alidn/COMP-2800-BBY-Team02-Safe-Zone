@@ -29,7 +29,7 @@ export default function Main(props) {
       username: sessionStorage.getItem("username"),
     });
 
-    sessionStorage.setItem("lobbyId", id); 
+    sessionStorage.setItem("lobbyId", id);
 
     setCreatedLobbyId(id);
 
@@ -53,7 +53,7 @@ export default function Main(props) {
     });
     props.socket.on("joined", () => {
       console.log("Connected successfully");
-      sessionStorage.setItem("lobbyId", chosenLobby); 
+      sessionStorage.setItem("lobbyId", chosenLobby);
 
       setConnectFailed(false);
     });
@@ -82,6 +82,9 @@ export default function Main(props) {
           flexDirection: "column",
         }}
       >
+        <Link to="/single">
+          <Button size={"large"}>Start a Single Player Game</Button>
+        </Link>
         <Button
           style={{ width: "90%", alignSelf: "center", marginTop: "30px" }}
           size={"large"}

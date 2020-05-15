@@ -33,9 +33,11 @@ import { UsergroupAddOutlined, BarChartOutlined } from "@ant-design/icons";
 
 const { Countdown } = Statistic;
 
-const PANE_WIDTH = 300;
-const PANE_HEIGHT = 300;
-export default function Game(props) {
+console.log(window.innerHeight);
+
+const PANE_WIDTH = window.innerWidth > 700 ? 700 : 300;
+const PANE_HEIGHT = window.innerWidth > 700 ? 700 : 300;
+export default function SingleMode(props) {
   const thisUsername = sessionStorage.getItem("username");
   let [isPaused, setPaused] = useState(true);
   let [users, setUsers] = useState([thisUsername]);
@@ -57,6 +59,15 @@ export default function Game(props) {
   let [startCountdownModalVisible, setStartCountdownModalVisible] = useState(
     false
   );
+
+  useEffect(() => {
+    let id = Math.floor(Math.random()
+    props.socket.emit("createRoom", 23456);
+    props.socket.emit("join", {
+      id: 23456,
+      username: sessionStorage.getItem("username"),
+    });
+  }, []);
 
   useEffect(() => {
     if (roundStarted) {
@@ -321,6 +332,7 @@ export default function Game(props) {
               for (let i = 0; i < dots.length; i++) {
                 if (Matter.Bounds.overlaps(userDot.bounds, dots[i].bounds)) {
                   console.log("Infected!");
+                  Matter.Body.setPosition(userDot, DOTS_INIITAL_LOCATION);
                 }
               }
               updateStatusBasedOnDistance(dots);
@@ -368,91 +380,26 @@ export default function Game(props) {
               />
               <Divider type="vertical" />
 
-              <Popover
-                title={"Players who want to start"}
-                content={wantToPlay.map((name) => {
-                  <p key="name">{name}</p>;
-                })}
-                visible={waitingForOthers}
-              >
-                <Button
-                  type="primary"
-                  size={"large"}
-                  loading={waitingForOthers}
-                  onClick={() => {
-                    props.socket.emit("start-round", thisUsername);
-                    setWaitingForOthers(true);
-                  }}
-                >
-                  {!waitingForOthers
-                    ? "Start Round"
-                    : "Waiting for other players"}
-                </Button>
-              </Popover>
-              <Divider type="vertical" />
-
               <Button
+                type="primary"
                 size={"large"}
-                icon={<UsergroupAddOutlined size={"large"} />}
+                loading={waitingForOthers}
+                onClick={() => {
+                  props.socket.emit("start-round", thisUsername);
+                  setWaitingForOthers(true);
+                }}
               >
-                Invite Friends
+                {!waitingForOthers
+                  ? "Start Round"
+                  : "Waiting for other players"}
               </Button>
               <Divider type="vertical" />
-
-              <Button
-                size={"large"}
-                onClick={() => setDrawerVisible(true)}
-                style={{ marginRight: "40px" }}
-                icon={<BarChartOutlined />}
-              >
-                Scoreboard
-              </Button>
-              {users.map((username) => (
-                <Popover
-                  title={username}
-                  content={<ProfileCard name={username} />}
-                  placement={"bottomRight"}
-                >
-                  <Badge
-                    count={
-                      badgesCount[username] === undefined
-                        ? 0
-                        : badgesCount[username]
-                    }
-                    style={{ backgroundColor: "#52c41a" }}
-                  >
-                    <Avatar
-                      style={{
-                        backgroundColor:
-                          username === thisUsername ? "#7265e6" : "#00a2ae",
-                      }}
-                      size={"large"}
-                    >
-                      {username}
-                    </Avatar>
-                  </Badge>
-                </Popover>
-              ))}
+              <span>Your score: 0</span>
             </Space>
           </div>
         }
       />
-      <Drawer
-        title={<h1>Scoreboard</h1>}
-        placement={"top"}
-        closable={false}
-        onClose={() => {
-          setDrawerVisible(false);
-        }}
-        visible={isDrawerVisible}
-      >
-        {scores.map((score) => (
-          <p>
-            <h3>{score.username}</h3>
-            {" : " + score.value}
-          </p>
-        ))}
-      </Drawer>
+
       <div
         style={{
           display: "flex",
