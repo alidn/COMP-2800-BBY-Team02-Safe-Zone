@@ -2,69 +2,170 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profile</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="-16x16.png">
-    <link rel="icon" href="favicon.ico"/>
-
-    <style>
-        body{
-            margin: 0;
-            padding: 0;
-            
-        }
-        .outerBox {
-            position: absolute;
-            width: 300px;
-            height: 530px;
-            padding: 40px;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            text-align: center;
-        }
-        .innerBox {
-            position: absolute;
-            width: 300px;
-            height: 350px;
-            padding: 40px;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            text-align: center;
-            background-color: #3aa89b;
-            z-index: -1;
-            border: 3px solid rgb(81, 198, 161);
-        }
-        #profPic {
-            width: 100px;
-            height: 100px;
-        }
-        #backgroundImg {
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 0.6;
-            z-index: -2;
-        }
-    </style>
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="myAccount.css" rel="stylesheet" type="text/css">
+    
 </head>
 <body>
-    <div class="outerBox">
-        <img id="profPic" src="usericon.png">
-        <div class="innerBox">
-            <h2 id="profUsername">Username</h2>
-            <br>
-            <div id="userInfo">
-                <h4>Highest Score: <span id="userHighScore">150</span></h4>
+    
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+
+<div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+
+                    <div class="card-body">
+                        <div class="card-title mb-4">
+                            <div class="d-flex justify-content-start">
+                                <div class="image-container">
+                                    <img src="http://placehold.it/150x150" id="imgProfile" style="width: 150px; height: 150px" class="img-thumbnail" />
+                                    <div class="middle">
+                                        <input type="button" class="btn btn-secondary" id="btnChangePicture" value="Change" />
+                                        <input type="file" style="display: none;" id="profilePicture" name="file" />
+                                    </div>
+                                </div>
+                                <div class="userData ml-3">
+                                    <h2 class="d-block" style="font-size: 1.5rem; font-weight: bold">Username</h2>
+                                    <h6 class="d-block">Highest Score: <span id="userHighScore">150</span></h6>
+                                </div>
+                                <div class="ml-auto">
+                                    <input type="button" class="btn btn-primary d-none" id="btnDiscard" value="Discard Changes" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-12">
+                                <ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" id="basicInfo-tab" data-toggle="tab" href="#basicInfo" role="tab" aria-controls="basicInfo" aria-selected="true">Basic Info</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="connectedServices-tab" data-toggle="tab" href="#connectedServices" role="tab" aria-controls="connectedServices" aria-selected="false">
+                                            Friends <span id="friendCount">(1)</span></a>
+                                    </li>
+                                </ul>
+                                <div class="tab-content ml-1" id="myTabContent">
+                                    <div class="tab-pane fade show active" id="basicInfo" role="tabpanel" aria-labelledby="basicInfo-tab">
+                                        
+
+                                        <div class="row">
+                                            <div class="col-sm-3 col-md-2 col-5">
+                                                <label style="font-weight:bold;">Name</label>
+                                            </div>
+                                            <div class="col-md-8 col-6">
+                                                Andrew Bernard
+                                            </div>
+                                        </div>
+                                        <hr />
+
+                                        <div class="row">
+                                            <div class="col-sm-3 col-md-2 col-5">
+                                                <label style="font-weight:bold;">Country</label>
+                                            </div>
+                                            <div class="col-md-8 col-6">
+                                                Canada
+                                            </div>
+                                        </div>
+                                        <hr />
+                                        
+                                        
+                                        <div class="row">
+                                            <div class="col-sm-3 col-md-2 col-5">
+                                                <label style="font-weight:bold;">Games Won</label>
+                                            </div>
+                                            <div class="col-md-8 col-6">
+                                                5
+                                            </div>
+                                        </div>
+                                        <hr />
+                                        <div class="row">
+                                            <div class="col-sm-3 col-md-2 col-5">
+                                                <label style="font-weight:bold;">Longest Time Survived</label>
+                                            </div>
+                                            <div class="col-md-8 col-6">
+                                                5:34 min
+                                            </div>
+                                        </div>
+                                        <hr />
+                                        <div class="row">
+                                            <div class="col-sm-3 col-md-2 col-5">
+                                                <label style="font-weight:bold;">About me</label>
+                                            </div>
+                                            <div class="col-md-8 col-6">
+                                                Cornell - Here Comes Trebel
+                                            </div>
+                                        </div>
+                                        <hr />
+
+                                    </div>
+                                    <div class="tab-pane fade" id="connectedServices" role="tabpanel" aria-labelledby="ConnectedServices-tab">
+                                        <div class="row">
+                                            <div class="col-sm-3 col-md-2 col-5">
+                                                <label style="font-weight:bold;">Dwigt</label>
+                                            </div>
+                                            <div class="col-md-8 col-6">
+                                                <input type="button" class="addFriendBtn" value="ADD FRIEND">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                </div>
             </div>
         </div>
     </div>
-    <img id="backgroundImg" src="backgroundimagevirus.png">
+    <script>
+        $(document).ready(function () {
+    $imgSrc = $('#imgProfile').attr('src');
+    function readURL(input) {
 
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#imgProfile').attr('src', e.target.result);
+            };
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+    $('#btnChangePicture').on('click', function () {
+        // document.getElementById('profilePicture').click();
+        if (!$('#btnChangePicture').hasClass('changing')) {
+            $('#profilePicture').click();
+        }
+        else {
+            // change
+        }
+    });
+    $('#profilePicture').on('change', function () {
+        readURL(this);
+        $('#btnChangePicture').addClass('changing');
+        $('#btnChangePicture').attr('value', 'Confirm');
+        $('#btnDiscard').removeClass('d-none');
+        // $('#imgProfile').attr('src', '');
+    });
+    $('#btnDiscard').on('click', function () {
+        // if ($('#btnDiscard').hasClass('d-none')) {
+        $('#btnChangePicture').removeClass('changing');
+        $('#btnChangePicture').attr('value', 'Change');
+        $('#btnDiscard').addClass('d-none');
+        $('#imgProfile').attr('src', $imgSrc);
+        $('#profilePicture').val('');
+        // }
+    });
+});
+    </script>
 </body>
 </html>

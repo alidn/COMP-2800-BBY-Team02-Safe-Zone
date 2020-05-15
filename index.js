@@ -6,6 +6,7 @@ let app = express();
     app.use(express.urlencoded({extended: true}));
     app.use(express.static("HTML shell"));
     app.use(express.static("images"));
+    app.use(express.static("styling"));
     app.set("view engine", "ejs");
 
 
@@ -35,7 +36,7 @@ app.get("/login", (req, res) => {
   res.render("login")
 })
 
-app.post("/signup", (req, res) =>{
+app.post("/signup", (req, res) => {
   // console.log(req.body);
   // console.log(req.body.emailInput);
   // console.log(req.body.usernameInput);
@@ -47,15 +48,17 @@ app.post("/signup", (req, res) =>{
     for(let i=0 ; i<docs.length ; i++){
       //Check to see if form data already exists in db
       if(docs[i].username == req.body.usernameInput){
-        console.log("THE USERNAME EXISTS!")
+        res.json({success: false, error: "Username already exists."})
+        return;
       }
       //Check to see if form data already exists in db
       if(docs[i].email == req.body.emailInput){
-        res.json({success: false})
+        res.json({success: false, error: "Email already exsits."})
+        return;
       }
-
     }
     res.json({success: true})
+    
   });
   
   
