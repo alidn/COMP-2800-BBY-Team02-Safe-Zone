@@ -1,0 +1,132 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <!-- <link rel="stylesheet" type="text/css" href="../styling/loginPage.css"> -->
+    <title>Login</title>
+
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="icon" href="favicon.ico" />
+    <link href="login.css" rel="stylesheet" type="text/css">
+    
+
+</head>
+
+<body>
+    <div class="box">
+        <img id="logoOnLogin" src="safezonelogo_2.png">
+        <input type="button" value="SIGN-IN" id="loginInBtn" data-toggle="modal" data-target="#signInModal">
+        <input type="button" value="SIGN-UP" id="signUpBtn" data-toggle="modal" data-target="#signUpModal">
+    </div>
+
+    <!-- Modal For SignUp-->
+    <div class="modal" id="signUpModal">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <img id="logoModal" src="safezonelogo_2.png">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <form class="signTextFields" id="signupform">
+                        <input name="emailInput" id="newEmail" type="text" class="modalInput" placeholder="Email">
+                        <input name="usernameInput" id="newUsername" type="text" class="modalInput" placeholder="Username">
+                        <input name="passwordInput" id="newPassword" type="password" class="modalInput" placeholder="Password">
+                        <input type="button" id="signupBtn" value="SIGN-UP">
+                    </form>
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal For SignUp-->
+    <div class="modal" id="signInModal">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <img id="logoModal" src="safezonelogo_2.png">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <form class="signTextFields" id="signinform">
+                        <input name="usernameInput" id="oldUsername" type="text" class="modalInput" placeholder="Username">
+                        <input name="passwordInput" id="oldPassword"type="password" class="modalInput" placeholder="Password">
+                        <input type="button" id="signinBtn" value="SIGN-IN">
+                    </form>
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $("#signupBtn").on("click", data => {
+            // console.log($("#signupform").serialize())
+            $.ajax({
+                url: 'signup/',
+                type: "POST",
+                data: $("#signupform").serialize(),
+                success: res => {
+                    if(res.success){
+                        //set local storage to username and redirect to myAccount
+                        localStorage.setItem("username", $('#newUsername').val());
+                        localStorage.setItem("password", $('#newPassword').val());
+                        window.location.href = "http://localhost:4000/myAccount"
+                        
+                    }else{
+                        alert(res.error)
+                    }
+    
+                }
+            });
+        })
+        $("#signinBtn").on("click", data => {
+            $.ajax({
+                url: 'signin/',
+                type: "POST",
+                data: $("#signinform").serialize(),
+                success: res => {
+                    if(res.success){
+                        //set local storage to username and redirect to myAccount
+                        localStorage.setItem("username", $('#oldUsername').val());
+                        localStorage.setItem("password", $('#oldPassword').val());
+                        window.location.href = "http://localhost:4000/myAccount"
+                        
+                    }else{
+                        alert(res.error)
+                    }
+    
+                }
+            });
+        })
+
+    </script>
+</body>
+
+</html>

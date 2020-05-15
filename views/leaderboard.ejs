@@ -8,31 +8,8 @@
     <link rel="icon" type="image/png" sizes="32x32" href="../images/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="../images/favicon-16x16.png">
     <link rel="icon" href="../images/favicon.ico"/>
-    <style>
-     
-        .tooltiptext {
-        visibility: hidden;
-        background-color: #53C6A2;
-        color: black;
-        position: absolute;
-        z-index: 1;
-        border-radius: 25px;
-        width: 20%;
-        text-align: center;
-        border: black solid 1px;
-      }
-      
-      #hover:hover .tooltiptext {
-        visibility: visible;
-      }
-      body{
-        background-color: #056A8B;
-      }
-      b{
-        font-weight:bold;
-        font-style: normal;
-      }
-      </style>
+    <link href="leaderboard.css" rel="stylesheet" type="text/css">
+
 </head>
 <body>
     <table class="table">
@@ -49,8 +26,9 @@
           <tr <%= i%2 ? `class=table-dark` : `class=table-light` %> >
             <th scope="row"><%= i+1 %></th>
             <td id="hover"><i><%= userArray[i].username %> <span class="tooltiptext"><%= userArray[i].email  %><br><b><%= userArray[i].friendsList %></b></i></span></td> 
-            <td><%= userArray[i].scores[0].score %></td>
-            <td><%= userArray[i].scores[0].dateAchieved %></td>
+             <!-- conditional rendering -->
+            <td><%= userArray[i].scores.length && userArray[i].scores[0].score %></td>
+            <td><%= userArray[i].scores.length && userArray[i].scores[0].dateAchieved %></td>
           </tr>
         <% } %>
           
