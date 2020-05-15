@@ -1,5 +1,7 @@
 body{
-    background-color: darkgray;
+    background: rgb(83,198,162);
+    background: linear-gradient(90deg, rgba(83,198,162,1) 0%, rgba(34,140,148,1) 89%);
+    color: black;
 }
 
 #mainLogo{
@@ -24,12 +26,12 @@ body{
     border-style: none;
     font-family: 'Roboto', sans-serif;
     font-size: 25px;
-    color: white;
-    background-color: rgb(78, 78, 78);
+    color: darkcyan;
+    background-color: white;
     text-align: center;
     transition: all 0.2s;
     height: 60px;
-    width: 250px;
+    width: 220px;
     cursor: pointer;
 }
 
@@ -100,7 +102,6 @@ html {
 
 .about-section {
     text-align: center;
-    background-color: darkgray;
     color: #111;
 }
 
