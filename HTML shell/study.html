@@ -45,23 +45,21 @@
     <!------------------------Section 1----------------------->
     <div id="section1" class="container-fluid">
         <h2>Global Corona Virus Cases:</h2>
-        <h2>4,610,235</h2>
+        <h2 id="totalCases">0</h2>
         <br>
         <h2>Deaths:</h2>
-        <h2>307,533</h2>
+        <h2 id="deaths">0</h2>
         <br>
         <h2>Recovered:</h2>
-        <h2>1,742,819</h2>
+        <h2 id="recovered">0</h2>
     </div>
 
     <!------------------------Section 2----------------------->
     <div id="section2" class="container-fluid">
         <h2>Graphical representation of COVID-19 cases by country:</h2>
-        <br>
-        <br>
-        <br>
-        <br>
-        <img src="/images/graph.png" alt="graph" width="100%"> 
+        <iframe width="500" height="388" frameborder="0" src="https://covid19chart.org/#/?bare=1&scale=linear&include=Canada&advanced=1&ratio=&theme=white&domain=Intl&start=%3E%3D50"></iframe>
+        <iframe width="500" height="388" frameborder="0" src="https://covid19chart.org/#/?bare=1&include=Canada&advanced=1&ratio=&theme=white&domain=Intl&start=%3E%3D50"></iframe>
+
     </div>
 
     <!------------------------Section 3----------------------->
@@ -81,6 +79,27 @@
         </ol>
     </div>
 
+    <script>
+
+        const totalCase = document.getElementById('totalCases');
+        const totalDeaths = document.getElementById('deaths');
+        const totalRecovered = document.getElementById('recovered');
+        const url = 'https://disease.sh/v2/all';
+
+        /************************************************** 
+        This prints the data from the API onto the page.
+        ***************************************************/
+        fetch(url)
+            .then(response => response.json())
+            .then(data => {
+            console.log(data);
+            totalCase.innerHTML = data.cases.toLocaleString('en');
+            totalDeaths.innerHTML = data.deaths.toLocaleString('en');
+            totalRecovered.innerHTML = data.recovered.toLocaleString('en');
+            })
+        .catch(error => console.error(error))
+
+    </script>
 </body>
 
 </html>
