@@ -71,6 +71,24 @@
         margin-top: 50px;
         text-align: center;
     }
+
+    #demo{
+        position: absolute;
+        bottom: 10px;
+        right: 50px;
+        border-radius: 100%;
+        width: 80px;
+        height: 80px;
+        font-size: 20px;
+        color: white;
+        background-color: #086f8e;
+    }
+
+    #demo:hover{
+        color: #086f8e;
+        border: #086f8e solid 2px;
+        background-color: white;
+    }
 }
 
 #contact a{
@@ -142,6 +160,18 @@
         height: 2em;
         width: 12em;
     }
+
+    #demo{
+        position: absolute;
+        bottom: 5px;
+        right: 10px;
+        border-radius: 100%;
+        width: 80px;
+        height: 80px;
+        font-size: 20px;
+        color: white;
+        background-color: #086f8e;
+    }
 }
 
 @media only screen and (max-width: 600px) {
@@ -203,5 +233,17 @@
         transition: all 0.2s;
         height: 2em;
         width: 12em;
+    }
+
+    #demo{
+        position: absolute;
+        bottom: 5px;
+        right: 10px;
+        border-radius: 100%;
+        width: 60px;
+        height: 60px;
+        font-size: 18px;
+        color: white;
+        background-color: #086f8e;
     }
 }

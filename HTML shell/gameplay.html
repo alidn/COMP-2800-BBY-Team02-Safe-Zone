@@ -9,32 +9,25 @@
     <link rel="apple-touch-icon" sizes="180x180" href="../images/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="../images/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="../images/favicon-16x16.png">
-    <link rel="icon" href="../images/favicon.ico"/>
-
-
+    <link rel="icon" href="../images/favicon.ico" />
     <link rel="stylesheet" type="text/css" href="../styling/gameplay.css" />
 
 </head>
 
 <body>
-
+    <!-- Game Mode pop up -->
     <div id="myNav" class="overlay">
         <a href="javascript:void(0)" class="closebtn" onclick="getHome()">&times;</a>
         <div class="overlay-content">
             <h3 class="diff">Please select game mode: </h3>
-            <a href="#" onclick="withSD()" id="mode">Quarantine <img src="../images/quarantine.png" alt="biohazard" width="50px"></a>
-            <a href="#" onclick="withoutSD()" id="mode">Chaos <img src="../images/skull.png" alt="skull" width="40px" id="skull"></a>       
+            <a href="#" onclick="withSD()" id="mode">Quarantine <img src="../images/quarantine.png" alt="biohazard"
+                    width="50px"></a>
+            <a href="#" onclick="withoutSD()" id="mode">Chaos <img src="../images/skull.png" alt="skull" width="40px"
+                    id="skull"></a>
         </div>
     </div>
 
-    <div id="gameplay" class="gameplay">
-        <div class="gameplay-content">
-            <div id="score">
-                <h1>Score: 0</h1>
-            </div>
-        </div>
-    </div>
-
+    <!-- Hardcoded End game page -->
     <div id="myGame" class="gameOver">
         <div class="gameOver-content">
             <h1>Game Over</h1>
@@ -77,9 +70,9 @@
                     <td>30</td>
                 </tr>
             </table>
+
             <!----------------------Dynamic Table------------------------>
             <!--<div id="dvTable"></div>-->
-
             <button type="button" onclick="restart()">Play Again!</button>
             <button type="button" onclick="study()">Learn More</button></br>
             <button type="button" onclick="getHome()">Home</button>
