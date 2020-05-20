@@ -1,29 +1,17 @@
 {
-  "name": "comp-2800-bby-team02-safe-zone",
+  "name": "workshop7",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "app.js",
   "dependencies": {
     "ejs": "^3.1.2",
-    "express": "^4.17.1",
-    "jest": "^25.5.3",
-    "mongodb": "^3.5.7"
+    "express": "^4.17.1"
   },
-  "devDependencies": {
-    "eslint": "^6.8.0"
-  },
+  "devDependencies": {},
   "scripts": {
-    "start": "node index.js",
-    "test": "jest"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/alidn/COMP-2800-BBY-Team02-Safe-Zone.git"
-  },
+  "keywords": [],
   "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/alidn/COMP-2800-BBY-Team02-Safe-Zone/issues"
-  },
-  "homepage": "https://github.com/alidn/COMP-2800-BBY-Team02-Safe-Zone#readme"
+  "license": "ISC"
 }
