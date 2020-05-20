@@ -12,15 +12,75 @@
 
 <body>
 
+    <script>
+        window.fbAsyncInit = function () {
+            FB.init({
+                appId: '1498328333675095',
+                cookie: true,
+                xfbml: true,
+                version: 'v7.0'
+            });
+            // Checks to see if user is logged into facebook
+            FB.getLoginStatus(function (response) {
+                statusChangeCallback(response);
+            });
+        };
+        // Checks for login state 
+        function checkLoginState() {
+            FB.getLoginStatus(function (response) {
+                statusChangeCallback(response);
+            });
+        }
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) {
+                return;
+            }
+            js = d.createElement(s);
+            js.id = id;
+            js.src = "https://connect.facebook.net/en_US/sdk.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+
+        function statusChangeCallback(response) {
+            if (response.status == 'connected') {
+                console.log('user is logged in');
+                setElements(true);
+            } else {
+                console.log('no user currently logged in');
+                setElements(false);
+            }
+        }
+        // Displays Facebook button elements
+        function setElements(isLoggedIn) {
+            if (isLoggedIn) {
+                document.getElementById('fbLoginBtn').style.display = "none";
+            } else {
+                document.getElementById('fbLoginBtn').style.display = "block";
+            }
+        }
+        // Logout function
+        function fbLogout() {
+            FB.logout(function (response) {
+                setElements(false);
+            });
+        }
+    </script>
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous"
+        src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&autoLogAppEvents=1&version=v7.0&appId=1498328333675095">
+    </script>
+
+
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-        crossorigin="anonymous"></script>
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+    </script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        crossorigin="anonymous"></script>
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
 
 
     <div class="container">
@@ -45,7 +105,7 @@
                                 </div>
                                 <div class="ml-auto">
                                     <input type="button" class="btn btn-primary d-none" id="btnDiscard"
-                                    value="Discard Changes" />
+                                        value="Discard Changes" />
                                 </div>
                             </div>
                         </div>
@@ -115,8 +175,22 @@
                                                 <label style="font-weight:bold;">Social media</label>
                                             </div>
                                             <div class="col-md-8 col-6" id="gamesPlayedFeild">
-                                                <a href="#" style="border: solid #53c6a2 2px" onClick="openTwitter()">Twitter</a>
+                                                <a href="https://twitter.com/share?ref_src=twsrc%5Etfw"
+                                                    class="twitter-share-button"
+                                                    data-text="Check out my new high score in SafeZone!" data-lang="en"
+                                                    data-show-count="false">Tweet</a>
+                                                <script async src="https://platform.twitter.com/widgets.js"
+                                                    charset="utf-8"></script>
+                                                <div id="fbShareBtn" style="margin-top: 5px">
+                                                    <div class="fb-share-button"
+                                                        data-href="https://developers.facebook.com/docs/plugins/"
+                                                        data-layout="button" data-size="small"><a target="_blank"
+                                                            href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse"
+                                                            class="fb-xfbml-parse-ignore">Share</a></div>
+                                                </div>
                                             </div>
+
+
 
                                         </div>
                                         <hr />
@@ -158,7 +232,9 @@
             document.getElementById("normalUsername").value = localStorage.getItem("username");
             let data = await fetch("/myAccount", {
                 method: "POST",
-                body: JSON.stringify({ username: localStorage.getItem("username") }),
+                body: JSON.stringify({
+                    username: localStorage.getItem("username")
+                }),
                 headers: {
                     "Content-Type": "application/json",
                 },
@@ -179,7 +255,8 @@
                         if (user.friendsList[i] == localStorage.getItem("username")) {
 
                         } else {
-                            $('.friendsListItem').first().clone().html("<p>" + user.friendsList[i] + "</p>").appendTo("#friendsList");
+                            $('.friendsListItem').first().clone().html("<p>" + user.friendsList[i] + "</p>")
+                                .appendTo("#friendsList");
                             $(document.createElement("br")).appendTo('#friendsList');
                         }
                     }
@@ -205,11 +282,10 @@
         });
 
         function openTwitter() {
-            MyWindow = window.open('https://twitter.com/intent/tweet?', 'MyWindow', 'width=600,height=300'); return false;
+            MyWindow = window.open('https://twitter.com/intent/tweet?', 'MyWindow', 'width=600,height=300');
+            return false;
 
         }
-
-
     </script>
 </body>
 
