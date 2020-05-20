@@ -45,7 +45,7 @@
                                 </div>
                                 <div class="ml-auto">
                                     <input type="button" class="btn btn-primary d-none" id="btnDiscard"
-                                        value="Discard Changes" />
+                                    value="Discard Changes" />
                                 </div>
                             </div>
                         </div>
@@ -107,6 +107,17 @@
                                             <div class="col-md-8 col-6" id="gamesPlayedFeild">
                                                 5
                                             </div>
+
+                                        </div>
+                                        <hr />
+                                        <div class="row">
+                                            <div class="col-sm-3 col-md-2 col-5">
+                                                <label style="font-weight:bold;">Social media</label>
+                                            </div>
+                                            <div class="col-md-8 col-6" id="gamesPlayedFeild">
+                                                <a href="#" style="border: solid #53c6a2 2px" onClick="openTwitter()">Twitter</a>
+                                            </div>
+
                                         </div>
                                         <hr />
 
@@ -121,10 +132,13 @@
                                             <div class="col-md-9 col-6">
                                                 <form action="/myAccount" method="POST">
                                                     <input type="text" name="friendID" id="addUsername" required>
-                                                    <input type="text" name="ownUser" id="normalUsername" style="display:none">
-                                                    <input type="submit" class="addFriendBtn" name="submit" id="addFriendbtn"  value="ADD FRIEND">
-                                                    <input type="submit" class="subFriendBtn" name="submit" id="subFriendbtn" value="REMOVE FRIEND">
-                                                  </form> 
+                                                    <input type="text" name="ownUser" id="normalUsername"
+                                                        style="display:none">
+                                                    <input type="submit" class="addFriendBtn" name="submit"
+                                                        id="addFriendbtn" value="ADD FRIEND">
+                                                    <input type="submit" class="subFriendBtn" name="submit"
+                                                        id="subFriendbtn" value="REMOVE FRIEND">
+                                                </form>
                                             </div>
                                         </div>
                                     </div>
@@ -162,9 +176,9 @@
                 if (user.friendsList.length > 0) {
                     // $('.friendsListItem').first().html("<p>" + user.friendsList[0] + "</p>").appendTo("#friendsList");
                     for (let i = 0; i < user.friendsList.length; i++) {
-                        if(user.friendsList[i] == localStorage.getItem("username")){
+                        if (user.friendsList[i] == localStorage.getItem("username")) {
 
-                        }else{
+                        } else {
                             $('.friendsListItem').first().clone().html("<p>" + user.friendsList[i] + "</p>").appendTo("#friendsList");
                             $(document.createElement("br")).appendTo('#friendsList');
                         }
@@ -175,13 +189,13 @@
                 $('#emailFeild').html("<p>" + user.email + "<p>")
                 $('#highestScoreFeild').html("<p>" + highstScore + "<p>")
                 $('#gamesPlayedFeild').html("<p>" + user.scores.length + "<p>")
-                    
-                    // $('#addFriendbtn').on('click', () => {
-                    //     // window.location.href = "http://localhost:4000/myAccount"
-                    // });
-                    // $('#subFriendbtn').on('click', () => {
-                    //     // window.location.href = "http://localhost:4000/myAccount"
-                    // });
+
+                // $('#addFriendbtn').on('click', () => {
+                //     // window.location.href = "http://localhost:4000/myAccount"
+                // });
+                // $('#subFriendbtn').on('click', () => {
+                //     // window.location.href = "http://localhost:4000/myAccount"
+                // });
             } else {
                 $('#usernameFeild').html("<p><p>")
                 $('#emailFeild').html("<p><p>")
@@ -189,6 +203,11 @@
                 $('#gamesPlayedFeild').html("<p><p>")
             }
         });
+
+        function openTwitter() {
+            MyWindow = window.open('https://twitter.com/intent/tweet?', 'MyWindow', 'width=600,height=300'); return false;
+
+        }
 
 
     </script>
