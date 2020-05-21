@@ -79,11 +79,14 @@
         <th scope="row"><%= i+1 %></th>
         <td id="hover"><i><%= userArray[i].username %> <span
               class="tooltiptext"><%= userArray[i].email  %><br><b><%= userArray[i].friendsList %></b></i></span></td>
+              <% if(userArray[i].scores[0] !== undefined){ %>
         <td><%= userArray[i].scores[0].score %></td>
         <td><%= userArray[i].scores[0].dateAchieved %></td>
       </tr>
-      <% } %>
-
+      <% }else{ %>
+        <td></td>
+        <td></td>
+        <% }} %>
     </tbody>
   </table>
 

@@ -239,18 +239,21 @@
                     "Content-Type": "application/json",
                 },
             });
+            //@data the data of the logged in user
             let user = await data.json();
             console.log(user);
             let localPass = localStorage.getItem("password");
+            //Check to make sure local password matches db password
             if (localPass == user.password) {
+                //set the highest score
                 let highstScore = 0;
                 for (let i = 0; i < user.scores.length; i++) {
                     if (user.scores[i].score > highstScore) {
                         highstScore = user.scores[i].score;
                     }
                 }
+                //generate the users friendslist in the friendslist section if the user has any friends
                 if (user.friendsList.length > 0) {
-                    // $('.friendsListItem').first().html("<p>" + user.friendsList[0] + "</p>").appendTo("#friendsList");
                     for (let i = 0; i < user.friendsList.length; i++) {
                         if (user.friendsList[i] == localStorage.getItem("username")) {
 
@@ -261,26 +264,22 @@
                         }
                     }
                 }
+                //Append all the data
                 $('#friendCount').html("(" + user.friendsList.length + ")")
                 $('#usernameFeild').html("<p>" + user.username + "<p>")
                 $('#emailFeild').html("<p>" + user.email + "<p>")
                 $('#highestScoreFeild').html("<p>" + highstScore + "<p>")
                 $('#gamesPlayedFeild').html("<p>" + user.scores.length + "<p>")
 
-                // $('#addFriendbtn').on('click', () => {
-                //     // window.location.href = "http://localhost:4000/myAccount"
-                // });
-                // $('#subFriendbtn').on('click', () => {
-                //     // window.location.href = "http://localhost:4000/myAccount"
-                // });
             } else {
+                //if no user is logged in change all the displayed data to empty feilds
                 $('#usernameFeild').html("<p><p>")
                 $('#emailFeild').html("<p><p>")
                 $('#highestScoreFeild').html("<p><p>")
                 $('#gamesPlayedFeild').html("<p><p>")
             }
         });
-
+        //A function that is called when the twitter button is pressed that will open a new window with twitters offical site
         function openTwitter() {
             MyWindow = window.open('https://twitter.com/intent/tweet?', 'MyWindow', 'width=600,height=300');
             return false;

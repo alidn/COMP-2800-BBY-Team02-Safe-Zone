@@ -15,7 +15,9 @@ app.use(express.json());
 
 const uri = "mongodb+srv://zas:zastv@cluster0-vztfn.mongodb.net/test?retryWrites=true&w=majority";
 const client = new MongoClient(uri, { useNewUrlParser: true });
-
+/**
+ * On startup the collection array is filled with users to be used later
+ */
 client.connect(async err => {
   const collection = client.db("game").collection("users");
   app.locals.collection = collection;
@@ -24,20 +26,29 @@ client.connect(async err => {
   });
   app.listen(4000);
 });
-
-app.get("/leaderboard", (req, res) => {
+/**
+ * When a get request for /leaderbaord occours, load the leaderboardpage with array of users
+ */
+app.post("/leaderboard", (req, res) => {
   sortScores();
   res.render("leaderboard", { userArray: collectionArray });
-})
 
+})
+/**
+ * When a get request happens to myAccount, render the myAccount apge
+ */
 app.get("/myAccount", (req, res) => {
   res.render("myAccount")
 })
-
+/**
+ * When a request happen to login, renger the login page
+ */
 app.get("/login", (req, res) => {
   res.render("login")
 })
-
+/**
+ * When a user signs up a encrypted password is made for them, if all the validation checks pass then the user is created and added to the database, at which point the myAccount will be rendered
+ */
 app.post("/signup", async (req, res) => {
   let hashedPass = await bcrypt.hash(req.body.passwordInput, 10);
   // console.log(req.body);
@@ -73,7 +84,12 @@ app.post("/signup", async (req, res) => {
 
 
 });
-
+/**
+ * When a post request is made to myAccount
+ * Either its an attemp to add friend, which will check to see if the friend exists in the friends list and if it doesnt the add them
+ * If its remove friend then the same checks will apply and the appropraite action will take place
+ * if its neither of the option then a user ref is passed back to myAccount to load the page
+ */
 app.post("/myAccount", async (req, res) => {
   if (req.body.submit === 'ADD FRIEND') {
     let userColl = app.locals.collection;
@@ -110,6 +126,13 @@ app.post("/myAccount", async (req, res) => {
 
 })
 
+
+/**
+ * Upon sending a post request to signin, the following will happen
+ * bcrypit will compare the hashed password to ensure its valid
+ * if it is vald send the hashedpassword back to the myAccount page to load up the account details
+ * if password is incorrect an alert will popup informing the user
+ */
 app.post("/signin", async (req, res) => {
 
   // console.log(req.body);
@@ -135,15 +158,13 @@ app.post("/signin", async (req, res) => {
 
 //This function will go through every user and sort the scores from highest to lowerst 
 function sortScores() {
-  console.log(collectionArray)
   for (let i = 0; i < collectionArray.length; i++) {
-
     collectionArray[i].scores.sort((a, b) => {
-      if (b.scores && a.scores) {
+      if (b.score && a.score) {
         return (b.score > a.score) ? 1 : -1
-      } else if (a.scores && !b.scores) {
+      } else if (a.score && !b.score) {
         return -1;
-      } else if (b.scores && !a.scores) {
+      } else if (b.score && !a.score) {
         return 1;
       } else {
         return 1
