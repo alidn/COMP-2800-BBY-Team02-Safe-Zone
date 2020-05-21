@@ -13,6 +13,7 @@
 <body>
 
     <script>
+        // Initializes facebook developer
         window.fbAsyncInit = function () {
             FB.init({
                 appId: '1498328333675095',
@@ -42,6 +43,10 @@
             fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));
 
+        /**
+         * Checks whether the user is connected to facebook then sets the correct elements to be displayed.
+         * @params response to check the connection status.
+         */
         function statusChangeCallback(response) {
             if (response.status == 'connected') {
                 console.log('user is logged in');
@@ -82,7 +87,7 @@
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
     </script>
 
-
+    <!-- Content inside main box -->
     <div class="container">
         <div class="row">
             <div class="col-12">
@@ -170,6 +175,7 @@
 
                                         </div>
                                         <hr />
+                                        <!-- Social Media buttons -->
                                         <div class="row">
                                             <div class="col-sm-3 col-md-2 col-5">
                                                 <label style="font-weight:bold;">Social media</label>
@@ -281,6 +287,7 @@
             }
         });
 
+        // Opens a twitter window to share
         function openTwitter() {
             MyWindow = window.open('https://twitter.com/intent/tweet?', 'MyWindow', 'width=600,height=300');
             return false;
