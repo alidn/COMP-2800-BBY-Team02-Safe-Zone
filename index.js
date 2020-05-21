@@ -29,7 +29,7 @@ client.connect(async err => {
 /**
  * When a get request for /leaderbaord occours, load the leaderboardpage with array of users
  */
-app.post("/leaderboard", (req, res) => {
+app.get("/leaderboard", (req, res) => {
   sortScores();
   res.render("leaderboard", { userArray: collectionArray });
 
