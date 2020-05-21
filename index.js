@@ -1,6 +1,7 @@
 
 const express = require("express");
-const MongoClient = require("mongodb").MongoClient;
+const MongoClient = require('mongodb').MongoClient;
+const bcrypt = require('bcrypt');
 let collectionArray = [];
 
 let app = express();
@@ -37,7 +38,8 @@ app.get("/login", (req, res) => {
   res.render("login")
 })
 
-app.post("/signup", (req, res) => {
+app.post("/signup", async (req, res) => {
+  let hashedPass = await bcrypt.hash(req.body.passwordInput, 10);
   // console.log(req.body);
   // console.log(req.body.emailInput);
   // console.log(req.body.usernameInput);
@@ -60,12 +62,12 @@ app.post("/signup", (req, res) => {
     }
     userColl.insertOne({
       username: req.body.usernameInput,
-      password: req.body.passwordInput,
+      password: hashedPass,
       email: req.body.emailInput,
       scores: [],
       friendsList: []
     })
-    res.json({ success: true })
+    res.json({ success: true, password: hashedPass })
     res.render("views/myAccount")
   });
 
@@ -108,20 +110,20 @@ app.post("/myAccount", async (req, res) => {
 
 })
 
-app.post("/signin", (req, res) => {
+app.post("/signin", async (req, res) => {
 
   // console.log(req.body);
   // console.log(req.body.usernameInput);
   // console.log(req.body.passwordInput);
   let userColl = app.locals.collection;
-  let x = userColl.find().toArray(function (err, docs) {
-
+  let x = userColl.find().toArray(async function (err, docs) {
     //Loop through all users
     for (let i = 0; i < docs.length; i++) {
       //Check to see if form data already exists in db
-      if (docs[i].username == req.body.usernameInput && docs[i].password == req.body.passwordInput) {
-        res.json({ success: true })
-        return;
+      if (await bcrypt.compare(req.body.passwordInput, docs[i].password) && docs[i].username == req.body.usernameInput) {
+        console.log("Login password: "+req.body.passwordInput+ ", hashPass: "+ docs[i].password);
+          res.json({ success: true, password: docs[i].password})
+          return; 
       }
     }
     res.json({ success: false, error: "Account not found!" })

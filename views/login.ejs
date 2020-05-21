@@ -96,7 +96,7 @@
                     if(res.success){
                         //set local storage to username and redirect to myAccount
                         localStorage.setItem("username", $('#newUsername').val());
-                        localStorage.setItem("password", $('#newPassword').val());
+                        localStorage.setItem("password", res.password);
                         window.location.href = "http://localhost:4000/myAccount"
                         
                     }else{
@@ -115,7 +115,7 @@
                     if(res.success){
                         //set local storage to username and redirect to myAccount
                         localStorage.setItem("username", $('#oldUsername').val());
-                        localStorage.setItem("password", $('#oldPassword').val());
+                        localStorage.setItem("password", res.password);
                         window.location.href = "http://localhost:4000/myAccount"
                         
                     }else{
