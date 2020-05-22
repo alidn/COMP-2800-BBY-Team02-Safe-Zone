@@ -6,7 +6,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link href="myAccount.css" rel="stylesheet" type="text/css">
+    <link href="../Styling/myAccount.css" rel="stylesheet" type="text/css">
 
 </head>
 
@@ -204,7 +204,7 @@
                                                 <label style="font-weight:bold;" class="friendsListItem"></label>
                                             </div>
                                             <div class="col-md-9 col-6">
-                                                <form action="/myAccount" method="POST">
+                                                <form action="/ejs/myAccount" method="POST">
                                                     <input type="text" name="friendID" id="addUsername" required>
                                                     <input type="text" name="ownUser" id="normalUsername"
                                                         style="display:none">
@@ -230,7 +230,7 @@
     <script>
         $(document).ready(async function () {
             document.getElementById("normalUsername").value = localStorage.getItem("username");
-            let data = await fetch("/myAccount", {
+            let data = await fetch("/ejs/myAccount", {
                 method: "POST",
                 body: JSON.stringify({
                     username: localStorage.getItem("username")

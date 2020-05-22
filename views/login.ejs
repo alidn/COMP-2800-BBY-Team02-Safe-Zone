@@ -10,18 +10,18 @@
     <!-- <link rel="stylesheet" type="text/css" href="../styling/loginPage.css"> -->
     <title>Login</title>
 
-    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
-    <link rel="icon" href="favicon.ico" />
-    <link href="login.css" rel="stylesheet" type="text/css">
+    <link rel="apple-touch-icon" sizes="180x180" href="../images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../images/favicon-16x16.png">
+    <link rel="icon" href="../images/favicon.ico" />
+    <link href="../Styling/login.css" rel="stylesheet" type="text/css">
     
 
 </head>
 
 <body>
     <div class="box">
-        <img id="logoOnLogin" src="safezonelogo_2.png">
+        <img id="logoOnLogin" src="../images/safezonelogo_2.png">
         <input type="button" value="SIGN-IN" id="loginInBtn" data-toggle="modal" data-target="#signInModal">
         <input type="button" value="SIGN-UP" id="signUpBtn" data-toggle="modal" data-target="#signUpModal">
     </div>
@@ -33,14 +33,14 @@
 
                 <!-- Modal Header -->
                 <div class="modal-header">
-                    <img id="logoModal" src="safezonelogo_2.png">
+                    <img id="logoModal" src="../images/safezonelogo_2.png">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
 
                 <!-- Modal body -->
                 <div class="modal-body">
                     <form class="signTextFields" id="signupform">
-                        <input name="emailInput" id="newEmail" type="text" class="modalInput" placeholder="Email">
+                        <input name="emailInput" id="newEmail" type="email" class="modalInput" placeholder="Email">
                         <input name="usernameInput" id="newUsername" type="text" class="modalInput" placeholder="Username">
                         <input name="passwordInput" id="newPassword" type="password" class="modalInput" placeholder="Password">
                         <input type="button" id="signupBtn" value="SIGN-UP">
@@ -63,7 +63,7 @@
 
                 <!-- Modal Header -->
                 <div class="modal-header">
-                    <img id="logoModal" src="safezonelogo_2.png">
+                    <img id="logoModal" src="../images/safezonelogo_2.png">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
 
@@ -71,7 +71,7 @@
                 <div class="modal-body">
                     <form class="signTextFields" id="signinform">
                         <input name="usernameInput" id="oldUsername" type="text" class="modalInput" placeholder="Username">
-                        <input name="passwordInput" id="oldPassword"type="password" class="modalInput" placeholder="Password">
+                        <input name="passwordInput" id="oldPassword" type="password" class="modalInput" placeholder="Password">
                         <input type="button" id="signinBtn" value="SIGN-IN">
                     </form>
                 </div>
@@ -88,10 +88,15 @@
     <script>
         //When the signup button is pressed
         $("#signupBtn").on("click", data => {
+          // let email = document.getElementById("newEmail").value;
+          // if (!email.endsWith(".com") || /.+@.+.com/.test(email)) {
+          //   alert("Please enter a valid email address");
+          //   return;
+          // }
             // console.log($("#signupform").serialize())
             //send a post reuqest to signup and set the username in the localstorage aswell as the hashed password
             $.ajax({
-                url: 'signup/',
+                url: '/ejs/signup/',
                 type: "POST",
                 data: $("#signupform").serialize(),
                 success: res => {
@@ -99,7 +104,7 @@
                         //set local storage to username and redirect to myAccount
                         localStorage.setItem("username", $('#newUsername').val());
                         localStorage.setItem("password", res.password);
-                        window.location.href = "http://localhost:4000/myAccount"
+                        window.location.href = "/HTML-shell/main.html"
                     // if the user already exists send error message
                     }else{
                         alert(res.error)
@@ -112,15 +117,16 @@
         $("#signinBtn").on("click", data => {
             $.ajax({
                 //send a post request to signin
-                url: 'signin/',
+                url: '/ejs/signin/',
                 type: "POST",
                 data: $("#signinform").serialize(),
                 success: res => {
                     if(res.success){
+                      console.log("success");
                         //set local storage to username and redirect to myAccount
                         localStorage.setItem("username", $('#oldUsername').val());
                         localStorage.setItem("password", res.password);
-                        window.location.href = "http://localhost:4000/myAccount"
+                        window.location.href = "/HTML-shell/main.html";
                      // if the data is incorrect send error message   
                     }else{
                         alert(res.error)
