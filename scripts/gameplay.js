@@ -35,6 +35,7 @@ function study() {
     location.replace('study.html');
 }
 
+//Timer function
 function tick() {
 
     document.getElementById("score").innerHTML = "<h1>SCORE: " + timeElapsed + "." + timeTenth + " s</h1>";
@@ -45,10 +46,12 @@ function tick() {
     }
 }
 
+//Start Timer
 function start() {
     timer = setInterval(tick, 100);
 }
 
+//Stop Timer
 function stop() {
     clearInterval(timer);
 }
