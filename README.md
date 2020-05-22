@@ -29,9 +29,9 @@ own mongodb connection string and place it in
 - NPM and Node 
 
 #### Running the app 
-First, run npm install to install all the dependencies.
+First, run `npm install` to install all the dependencies.
 
-Run `npm build` and then `npm start`. 
+Run `npm run build` and then `npm start`. 
 
 This Runs the app in the development mode.<br />
 Open [http://localhost:5000](http://localhost:5000) to view it in the browser.
