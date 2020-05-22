@@ -11,6 +11,8 @@ app.use(express.static("images"));
 app.use(express.static("styling"));
 app.set("view engine", "ejs");
 
+app.get("/", (req, res) => res.redirect("/ejs/login")); 
+
 app.use(express.json());
 
 const uri = "mongodb+srv://zas:zastv@cluster0-vztfn.mongodb.net/test?retryWrites=true&w=majority";
