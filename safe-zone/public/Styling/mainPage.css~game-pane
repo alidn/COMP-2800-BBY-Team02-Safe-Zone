@@ -1,0 +1,66 @@
+body{
+    background-color: darkgray;
+}
+
+#mainLogo{
+    text-align: center;
+    margin-bottom: -100px;
+
+}
+
+.buttonHolder {
+    text-align: center;
+}
+
+.button {
+    margin-left: 42%;
+    display: block;
+    margin-bottom: 10px;
+    border-radius: 30px;
+    border-style: none;
+    font-family: 'Roboto', sans-serif;
+    font-size: 25px;
+    color: white;
+    background-color: rgb(78, 78, 78);
+    text-align: center;
+    transition: all 0.2s;
+    height: 60px;
+    width: 250px;
+    cursor: pointer;
+}
+
+.button:hover {
+    background-color: #818181;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+#logo, li {
+    float: left;
+}
+#logo {
+    height: 6vh;
+    margin-top: -2vh;
+}
+
+li:last-child {
+    border-right: none;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 4vh;
+    text-decoration: none;
+}
+
+li:not(:first-child):hover {
+    background-color: #111;
+}
