@@ -5,6 +5,8 @@ to increase awareness about COVID-19.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+Link to the testing plan: [testing plan](https://docs.google.com/spreadsheets/d/1MJ9dS-VP9yhOe5p5RrGlAhf8RlyBSCCEG97f49UoT8M/edit#gid=0) 
+
 #### Languages 
 - HTML/CSS
 - JavaScript
@@ -34,7 +36,7 @@ First, run `npm install` to install all the dependencies.
 Run `npm run build` and then `npm start`. 
 
 This Runs the app in the development mode.<br />
-Open [http://localhost:5000](http://localhost:5000) to view it in the browser.
+Open [http://localhost:5000/ejs/login](http://localhost:5000/ejs/login) to view it in the browser.
 
 ## File Structure 
 ```
