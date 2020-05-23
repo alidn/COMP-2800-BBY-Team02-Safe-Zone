@@ -1,0 +1,124 @@
+body{
+    background: rgb(83,198,162);
+    background: linear-gradient(90deg, rgba(83,198,162,1) 0%, rgba(34,140,148,1) 89%);
+    color: black;
+}
+
+#mainLogo{
+    text-align: center;
+    margin-bottom: -100px;
+
+}
+
+#blurb {
+    margin: 2vw;
+}
+
+.buttonHolder {
+    text-align: center;
+}
+
+.button {
+    margin-left: 42%;
+    display: block;
+    margin-bottom: 10px;
+    border-radius: 30px;
+    border-style: none;
+    font-family: 'Roboto', sans-serif;
+    font-size: 25px;
+    color: darkcyan;
+    background-color: white;
+    text-align: center;
+    transition: all 0.2s;
+    height: 60px;
+    width: 220px;
+    cursor: pointer;
+}
+
+.button:hover {
+    background-color: #818181;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+#logo, li {
+    float: left;
+}
+#logo {
+    height: 6vh;
+    margin-top: -2vh;
+}
+
+li:last-child {
+    border-right: none;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 4vh;
+    text-decoration: none;
+}
+
+li:not(:first-child):hover {
+    background-color: #111;
+}
+
+
+html {
+    box-sizing: border-box;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+.column {
+    float: left;
+    width: 20%;
+    margin-bottom: 16px;
+    padding: 0 8px;
+}
+
+@media screen and (max-width: 399px) {
+    .column {
+        width: 100%;
+        display: block;
+    }
+}
+@media screen and (min-width: 400px) and (max-width: 1024px) {
+    .column {
+        width: 50%;
+        display: block;
+    }
+}
+
+.about-section {
+    text-align: center;
+    color: #111;
+}
+
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.container {
+    padding: 0 16px;
+}
+
+.container::after, .row::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+.title {
+    color: #505050;
+}

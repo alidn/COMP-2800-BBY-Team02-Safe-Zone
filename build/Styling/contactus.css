@@ -1,0 +1,129 @@
+
+* {
+	margin:0;
+	padding:0;
+	box-sizing:border-box;
+	-webkit-box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	-webkit-font-smoothing:antialiased;
+	-moz-font-smoothing:antialiased;
+	-o-font-smoothing:antialiased;
+	text-rendering:optimizeLegibility;
+}
+
+body {
+	font-family:"Open Sans", Helvetica, Arial, sans-serif;
+	font-weight:300;
+	font-size: 12px;
+	line-height:30px;
+}
+
+h3 {
+	margin-bottom: 2vh;
+}
+
+.container {
+	max-width:400px;
+	width:100%;
+	margin:0 auto;
+	position:relative;
+	margin-top: 10vh;
+}
+
+#suggestion_box textarea, #suggestion_box button[type="submit"] { 
+	font:400 16px/16px "Open Sans", Helvetica, Arial, sans-serif; 
+}
+
+#suggestion_box {
+	background:#F9F9F9;
+	padding:25px;
+	margin:50px 0;
+}
+
+#suggestion_box h3 {
+	color: rgb(4, 93, 116);
+	display: block;
+	font-size: 30px;
+	font-weight: 400;
+}
+
+#suggestion_boxh4 {
+	margin:5px 0 15px;
+	display:block;
+	font-size:13px;
+}
+
+#suggestion_box h5 {
+	margin:5px 0 15px;
+	display:block;
+	font-size:10px;
+}
+
+fieldset {
+	border: medium none !important;
+	margin: 0 0 10px;
+	min-width: 100%;
+	padding: 0;
+	width: 100%;
+}
+
+#suggestion_box textarea {
+	width:100%;
+	height: 100px;
+	border:1px solid #CCC;
+	background:#FFF;
+	margin:0 0 5px;
+	padding:10px;
+}
+
+#suggestion_box textarea:hover {
+	-webkit-transition:border-color 0.3s ease-in-out;
+	-moz-transition:border-color 0.3s ease-in-out;
+	transition:border-color 0.3s ease-in-out;
+	border:1px solid #AAA;
+}
+
+#suggestion_box button[type="submit"] {
+	cursor:pointer;
+	width:100%;
+	border:none;
+	background:rgb(4, 93, 116);
+	color:#FFF;
+	margin:0 0 5px;
+	padding:10px;
+	font-size:18px;
+}
+
+#suggestion_box button[type="submit"]:hover {
+	background:#FFF;
+	color: rgb(4, 93, 116);
+	-webkit-transition:background 0.2s ease-in-out;
+	-moz-transition:background 0.2s ease-in-out;
+	transition:background-color 0.2s ease-in-out;
+}
+
+#suggestion_box button[type="submit"]:active { 
+	box-shadow:inset 0 1px 3px rgba(0, 0, 0, 0.5); 
+}
+
+#suggestion_box input:focus, #suggestion_box textarea:focus {
+	outline:0;
+	border:1px solid #999;
+}
+
+::-webkit-input-placeholder {
+ color:#888;
+}
+
+:-moz-placeholder {
+ color:#888;
+}
+
+::-moz-placeholder {
+ color:#888;
+}
+
+:-ms-input-placeholder {
+ color:#888;
+}
+

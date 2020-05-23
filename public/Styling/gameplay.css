@@ -1,0 +1,271 @@
+@media only screen and (max-width: 600px) {
+    body {
+        font-family: sans-serif;
+    }
+
+    /**---------------------------------------Game Mode------------------------------*/
+    .overlay {
+        height: 100%;
+        width: 100%;
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        background-color: rgb(0, 0, 0);
+        background-color: rgba(0, 0, 0, 0.9);
+        overflow-y: hidden;
+        transition: 0.5s;
+    }
+
+    .overlay-content {
+        position: relative;
+        top: 25%;
+        width: 100%;
+        text-align: center;
+        margin-top: 30px;
+        font-size: 36px;
+        color: #818181;
+    }
+
+    .diff {
+        color: #f1f1f1;
+    }
+
+    .overlay a {
+        padding: 8px;
+        text-decoration: none;
+        font-size: 40px;
+        color: #818181;
+        display: block;
+        transition: 0.3s;
+        }
+
+    .overlay a:hover,
+    .overlay a:focus {
+        color: #f1f1f1;
+    }
+
+    .overlay .closebtn {
+        position: absolute;
+        top: 20px;
+        right: 45px;
+        font-size: 60px;
+    }
+
+    @media screen and (max-height: 450px) {
+        .overlay {
+            overflow-y: auto;
+        }
+
+        .overlay a {
+            font-size: 20px
+        }
+
+        .overlay .closebtn {
+            font-size: 40px;
+            top: 15px;
+            right: 35px;
+        }
+    }
+}
+
+body {
+    font-family: sans-serif;
+}
+
+.overlay-content img{
+    margin-bottom: -8px;
+}
+
+#mode{
+    padding: 40px;
+}
+
+/**---------------------------------------Game Mode------------------------------*/
+.overlay {
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.9);
+    overflow-y: hidden;
+    transition: 0.5s;
+}
+
+.overlay-content {
+    position: relative;
+    top: 25%;
+    width: 100%;
+    text-align: center;
+    margin-top: 30px;
+    font-size: 36px;
+    color: #818181;
+}
+
+.diff {
+    color: #f1f1f1;
+}
+
+.overlay a {
+    padding: 8px;
+    text-decoration: none;
+    font-size: 40px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+.overlay a:hover,
+.overlay a:focus {
+    color: #f1f1f1;
+}
+
+.overlay .closebtn {
+    position: absolute;
+    top: 20px;
+    right: 45px;
+    font-size: 60px;
+}
+
+@media screen and (max-height: 450px) {
+    .overlay {
+        overflow-y: auto;
+    }
+
+    .overlay a {
+        font-size: 20px
+    }
+
+    .overlay .closebtn {
+        font-size: 40px;
+        top: 15px;
+        right: 35px;
+    }
+}
+
+/** ------------------------------------Game Over ---------------------------------------------*/
+.gameOver {
+    text-align: center;
+    height: 0%;
+    width: 100%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: white;
+    background-color: white;
+    overflow-y: hidden;
+    transition: 0.5s;
+    background-color: darkcyan;
+}
+
+.gameOver-content {
+    text-align: center;
+    color: whitesmoke;
+}
+
+.overlay-content {
+    position: relative;
+    top: 25%;
+    width: 100%;
+    text-align: center;
+    margin-top: 30px;
+    font-size: 36px;
+    color: rgb(37, 36, 36);
+}
+
+th {
+    font-size: 20px;
+}
+
+td {
+    padding: 15px;
+    border: whitesmoke 1px solid;
+}
+
+#score {
+    float: left;
+}
+
+.gameOver-content button {
+    width: 200px;
+    height: 50px;
+    border: 1px solid black;
+    border-radius: 10px;
+    background-color: whitesmoke;
+    color: rgb(2, 75, 75);
+    margin-top: 50px;
+    font-size: 20px;
+}
+
+.gameOver-content button:hover {
+    background-color: #157c90b7;
+    color: white;
+    border: solid white 1px;
+    cursor: pointer;
+}
+
+
+/* The Modal (background) */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+}
+
+/* Modal Content */
+.modal-content {
+    background-color: #228C94;
+    margin: auto;
+    padding: 20px;
+    border: 2px solid #888;
+    width: 80%;
+}
+
+.modal-header {
+    padding: 2px 16px;
+    color: white;
+}
+  
+.modal-body {
+    padding: 2px 16px;
+}
+
+/* The Close Button */
+.close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#myBtn {
+    background-color: #818181;
+    color: white;
+    border: 2px solid #818181;
+    
+}
+#myBtn:hover {
+    background-color: #f1f1f1;
+    color: #818181;
+    border: 2px solid #f1f1f1;
+}
+
