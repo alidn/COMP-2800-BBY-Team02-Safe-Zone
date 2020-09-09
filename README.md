@@ -3,7 +3,7 @@
 This app is a small simulation game intended 
 to increase awareness about COVID-19.
 
-Link to the web app: [Website](https://rocky-temple-78336.herokuapp.com/ejs/login)
+Link to the web app: [Website](https://safe--zone.herokuapp.com/ejs/login)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
